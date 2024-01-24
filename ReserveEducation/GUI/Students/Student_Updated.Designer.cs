@@ -100,7 +100,7 @@
             this.StudentSubject_cmbSpecializationFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StudentSubject_cmbSpecializationFilter.FormattingEnabled = true;
             this.StudentSubject_cmbSpecializationFilter.IntegralHeight = false;
-            this.StudentSubject_cmbSpecializationFilter.Location = new System.Drawing.Point(6, 69);
+            this.StudentSubject_cmbSpecializationFilter.Location = new System.Drawing.Point(6, 73);
             this.StudentSubject_cmbSpecializationFilter.Name = "StudentSubject_cmbSpecializationFilter";
             this.StudentSubject_cmbSpecializationFilter.Size = new System.Drawing.Size(174, 21);
             this.StudentSubject_cmbSpecializationFilter.TabIndex = 8;
@@ -158,7 +158,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 93);
+            this.label8.Location = new System.Drawing.Point(3, 97);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 14;
@@ -168,14 +168,14 @@
             // 
             this.StudentSubject_cmbSelectFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StudentSubject_cmbSelectFilter.FormattingEnabled = true;
-            this.StudentSubject_cmbSelectFilter.Location = new System.Drawing.Point(6, 109);
+            this.StudentSubject_cmbSelectFilter.Location = new System.Drawing.Point(6, 113);
             this.StudentSubject_cmbSelectFilter.Name = "StudentSubject_cmbSelectFilter";
             this.StudentSubject_cmbSelectFilter.Size = new System.Drawing.Size(174, 21);
             this.StudentSubject_cmbSelectFilter.TabIndex = 13;
             // 
             // StudentSubject_btnFilter
             // 
-            this.StudentSubject_btnFilter.Location = new System.Drawing.Point(6, 136);
+            this.StudentSubject_btnFilter.Location = new System.Drawing.Point(6, 140);
             this.StudentSubject_btnFilter.Name = "StudentSubject_btnFilter";
             this.StudentSubject_btnFilter.Size = new System.Drawing.Size(174, 35);
             this.StudentSubject_btnFilter.TabIndex = 12;
@@ -186,7 +186,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 53);
+            this.label5.Location = new System.Drawing.Point(3, 57);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 13);
             this.label5.TabIndex = 11;
