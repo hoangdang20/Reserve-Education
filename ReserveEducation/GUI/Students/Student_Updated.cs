@@ -46,7 +46,7 @@ namespace ReserveEducation.GUI.StudentSubject
                 StudentID = data.ID,
             }).Data;
 
-            StudentSubject_txtSelectedSubjectTotal.Text = studentSubject.Count().ToString();
+            // StudentSubject_txtSelectedSubjectTotal.Text = studentSubject.Count().ToString();
         }
         void loadSpecialization()
         {
@@ -133,7 +133,7 @@ namespace ReserveEducation.GUI.StudentSubject
                 {
                     bool result = StudentSubjectService.Delete(data, subject);
                 }
-                StudentSubject_txtSelectedSubjectTotal.Text = cklbSubjects.CheckedItems.Count.ToString();
+                // StudentSubject_txtSelectedSubjectTotal.Text = cklbSubjects.CheckedItems.Count.ToString();
             }
 
         }
