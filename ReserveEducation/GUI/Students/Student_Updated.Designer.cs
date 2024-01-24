@@ -59,6 +59,7 @@
             this.Student_txtStudentCode.Name = "Student_txtStudentCode";
             this.Student_txtStudentCode.Size = new System.Drawing.Size(156, 20);
             this.Student_txtStudentCode.TabIndex = 2;
+            this.Student_txtStudentCode.TextChanged += new System.EventHandler(this.Student_txtStudentCode_TextChanged);
             // 
             // Student_txtStudentName
             // 
@@ -66,6 +67,7 @@
             this.Student_txtStudentName.Name = "Student_txtStudentName";
             this.Student_txtStudentName.Size = new System.Drawing.Size(156, 20);
             this.Student_txtStudentName.TabIndex = 3;
+            this.Student_txtStudentName.TextChanged += new System.EventHandler(this.Student_txtStudentName_TextChanged);
             // 
             // label1
             // 
@@ -137,6 +139,7 @@
             this.Student_cmbClasses.Name = "Student_cmbClasses";
             this.Student_cmbClasses.Size = new System.Drawing.Size(156, 21);
             this.Student_cmbClasses.TabIndex = 10;
+            this.Student_cmbClasses.SelectedIndexChanged += new System.EventHandler(this.Student_cmbClasses_SelectedIndexChanged);
             // 
             // groupBox2
             // 

@@ -69,23 +69,11 @@
     <Compile Include="GUI\Classes\Classes_Update.Designer.cs">
       <DependentUpon>Classes_Update.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Faculties\Faculties_Added.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Faculties\Faculties_Added.Designer.cs">
-      <DependentUpon>Faculties_Added.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Faculties\Faculties_Update.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Faculties\Faculties_Update.Designer.cs">
       <DependentUpon>Faculties_Update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Specializations\Specializations_Added.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Specializations\Specializations_Added.Designer.cs">
-      <DependentUpon>Specializations_Added.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Specializations\Specializations_Updated.cs">
       <SubType>Form</SubType>
@@ -173,14 +161,8 @@
     <EmbeddedResource Include="GUI\Classes\Classes_Update.resx">
       <DependentUpon>Classes_Update.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Faculties\Faculties_Added.resx">
-      <DependentUpon>Faculties_Added.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Faculties\Faculties_Update.resx">
       <DependentUpon>Faculties_Update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Specializations\Specializations_Added.resx">
-      <DependentUpon>Specializations_Added.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Specializations\Specializations_Updated.resx">
       <DependentUpon>Specializations_Updated.cs</DependentUpon>

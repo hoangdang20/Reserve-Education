@@ -9,6 +9,6 @@ namespace ReserveEducation.Dtos.SpecializationDto
     internal class SearchSpecializationDto : PagedSearch
     {
         public string Keyword { get; set; }
-        public int? FacultyID { get; set; }
+        public int? FacultyID { get; set; } = null;
     }
 }

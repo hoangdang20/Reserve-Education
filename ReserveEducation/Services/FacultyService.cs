@@ -35,37 +35,27 @@ namespace ReserveEducation.Services
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
                 return false;
             }
         }
-        public static bool Update(int facultyID, string newfacultyName)
+        public static bool Update(Faculty faculty)
         {
-            db.Configuration.AutoDetectChangesEnabled = true;
             try
             {
-                var facultyToUpdate = db.Faculties.FirstOrDefault(f => f.ID == facultyID);
-                if (facultyToUpdate == null)
-                {
-                    MessageBox.Show("Không tìm thấy khoa cần sửa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
-                if (db.Faculties.Any(x => x.Name == newfacultyName && x.ID != facultyID))
+                var facultyToUpdate = db.Faculties.FirstOrDefault(f => f.ID == faculty.ID);
+                if (db.Faculties.Any(x => x.Name == faculty.Name && x.ID != faculty.ID))
                 {
                     MessageBox.Show("Tên khoa đã tồn tại", "Thông báo");
                     return false;
                 }
-
-                facultyToUpdate.Name = newfacultyName;
+                facultyToUpdate.Name = faculty.Name;
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -74,13 +64,16 @@ namespace ReserveEducation.Services
             try
             {
                 var facultyToDelete = db.Faculties.FirstOrDefault(f => f.ID == facultyID);
+                if (facultyToDelete.Specializations.Count() > 0)
+                {
+                    return false;
+                }
                 db.Faculties.Remove(facultyToDelete);
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
                 return false;
             }
         }

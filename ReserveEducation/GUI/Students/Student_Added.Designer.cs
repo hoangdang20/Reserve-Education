@@ -52,6 +52,7 @@
             this.txtStudentCode.Name = "txtStudentCode";
             this.txtStudentCode.Size = new System.Drawing.Size(356, 20);
             this.txtStudentCode.TabIndex = 1;
+            this.txtStudentCode.TextChanged += new System.EventHandler(this.txtStudentCode_TextChanged);
             // 
             // cmbClasses_Student
             // 
@@ -61,6 +62,7 @@
             this.cmbClasses_Student.Name = "cmbClasses_Student";
             this.cmbClasses_Student.Size = new System.Drawing.Size(356, 21);
             this.cmbClasses_Student.TabIndex = 2;
+            this.cmbClasses_Student.SelectedIndexChanged += new System.EventHandler(this.cmbClasses_Student_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -87,6 +89,7 @@
             this.txtStudentName.Name = "txtStudentName";
             this.txtStudentName.Size = new System.Drawing.Size(356, 20);
             this.txtStudentName.TabIndex = 0;
+            this.txtStudentName.TextChanged += new System.EventHandler(this.txtStudentName_TextChanged);
             // 
             // label3
             // 
@@ -113,7 +116,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Thêm môn học";
-            this.Load += new System.EventHandler(this.StudentAdded_Frm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

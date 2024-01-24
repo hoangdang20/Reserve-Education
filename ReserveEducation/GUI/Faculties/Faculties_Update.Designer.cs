@@ -1,4 +1,4 @@
-﻿namespace ReserveEducation.GUI.Faculty
+﻿namespace ReserveEducation.GUI.Faculties
 {
     partial class Faculty_Updated_Frm
     {
@@ -39,6 +39,7 @@
             this.txtName_Faculty.Name = "txtName_Faculty";
             this.txtName_Faculty.Size = new System.Drawing.Size(360, 20);
             this.txtName_Faculty.TabIndex = 0;
+            this.txtName_Faculty.TextChanged += new System.EventHandler(this.txtName_Faculty_TextChanged);
             // 
             // label2
             // 
@@ -73,7 +74,7 @@
             this.Name = "Faculty_Updated_Frm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Sửa khoa";
+            this.Text = "Thông tin khoa";
             this.ResumeLayout(false);
             this.PerformLayout();
 
