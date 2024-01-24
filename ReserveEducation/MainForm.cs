@@ -227,7 +227,7 @@ namespace ReserveEducation
         void loadComboBoxFaculty_Specialization()
         {
             Specialization_cmbFaculty_Filter.Items.Clear();
-            Specialization_cmbFaculty_Filter.Items.Add("");
+            Specialization_cmbFaculty_Filter.Items.Add("Chọn tất cả");
             foreach (var item in facultiesTotal)
             {
                 Specialization_cmbFaculty_Filter.Items.Add(item);
@@ -293,7 +293,7 @@ namespace ReserveEducation
         {
             keywordSpecialization = Specialization_txtKeyWord_Filter.Text.Trim();
             specializationsPage = 1;
-            idFaculty_FilterSpecialization = -1;
+            idFaculty_FilterSpecialization = null;
             if (!string.IsNullOrEmpty(Specialization_cmbFaculty_Filter.Text.Trim()))
             {
                 var selectedFaculty = facultiesTotal.FirstOrDefault(f => f.Name == Specialization_cmbFaculty_Filter.Text);
@@ -379,7 +379,7 @@ namespace ReserveEducation
         void loadComboBoxSpecialization_Class()
         {
             Classes_cmbSpecialization_Filter.Items.Clear();
-            Classes_cmbSpecialization_Filter.Items.Add("");
+            Classes_cmbSpecialization_Filter.Items.Add("Chọn tất cả");
             foreach (var item in specializationsTotal)
             {
                 Classes_cmbSpecialization_Filter.Items.Add(item);
@@ -444,7 +444,7 @@ namespace ReserveEducation
         private void Class_btnFilter_Click(object sender, EventArgs e)
         {
             keywordClass = Classes_txtKeyWord_Filter.Text.Trim();
-            idSpecialization_FilterClasses = -1;
+            idSpecialization_FilterClasses = null;
             specializationsPage = 1;
             if (!string.IsNullOrEmpty(Classes_cmbSpecialization_Filter.Text.Trim()))
             {
@@ -532,7 +532,7 @@ namespace ReserveEducation
         void loadComboBoxSpecialization_Subject()
         {
             Subjects_cmbSpecialization_Filter.Items.Clear();
-            Subjects_cmbSpecialization_Filter.Items.Add("");
+            Subjects_cmbSpecialization_Filter.Items.Add("Chọn tất cả");
             foreach (var item in specializationsTotal)
             {
                 Subjects_cmbSpecialization_Filter.Items.Add(item);
@@ -554,8 +554,8 @@ namespace ReserveEducation
         }
         private void Subjects_btnAdd_Click(object sender, EventArgs e)
         {
-            SubjectAdded_Frm addSubject = new SubjectAdded_Frm(specializationsTotal);
-            addSubject.ShowDialog();
+            SubjectsUpdated_Frm subject = new SubjectsUpdated_Frm();
+            subject.ShowDialog();
             loadDataSubject();
         }
         private void dgvSubject_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -564,8 +564,7 @@ namespace ReserveEducation
             if (e.ColumnIndex == senderGrid.Columns["Subject_btnUpdate"].Index && e.RowIndex >= 0)
             {
                 var selectedRow = dgvSubjects.Rows[e.RowIndex];
-                SubjectsUpdated_Frm updateSubject = new SubjectsUpdated_Frm(int.Parse(selectedRow.Cells[0].Value.ToString()), selectedRow.Cells[1].Value.ToString(), selectedRow.Cells[2].Value.ToString(), selectedRow.Cells[3].Value.ToString(), specializationsTotal);
-                updateSubject.ShowDialog();
+                SubjectsUpdated_Frm updateSubject = new SubjectsUpdated_Frm(subjects[e.RowIndex]);                updateSubject.ShowDialog();
                 loadDataSubject();
 
             }
@@ -594,7 +593,7 @@ namespace ReserveEducation
         {
             keywordSubject = Subjects_txtKeyWord_Filter.Text.Trim();
             subjectsPage = 1;
-            idSpecialization_FilterSubject = -1;
+            idSpecialization_FilterSubject = null;
             if (!string.IsNullOrEmpty(Subjects_cmbSpecialization_Filter.Text.Trim()))
             {
                 var selectedSpecialization = specializationsTotal.FirstOrDefault(f => f.Name == Subjects_cmbSpecialization_Filter.Text);
@@ -674,7 +673,7 @@ namespace ReserveEducation
         void loadComboBoxClass_Student()
         {
             Student_cmbClass_Filter.Items.Clear();
-            Student_cmbClass_Filter.Items.Add("");
+            Student_cmbClass_Filter.Items.Add("Chọn tất cả");
             foreach (var item in studentClassesTotal)
             {
                 Student_cmbClass_Filter.Items.Add(item);
@@ -750,7 +749,7 @@ namespace ReserveEducation
         {
             keywordStudent = Student_txtKeyWord_Filter.Text.Trim();
             studentsPage = 1;
-            idClass_FilterStudent = -1;
+            idClass_FilterStudent = null;
             if (!string.IsNullOrEmpty(Student_cmbClass_Filter.Text.Trim()))
             {
                 var selectedClass = studentClassesTotal.FirstOrDefault(f => f.Name == Student_cmbClass_Filter.Text);

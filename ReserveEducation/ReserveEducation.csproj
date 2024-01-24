@@ -105,17 +105,11 @@
     <Compile Include="GUI\Students\Student_Added.Designer.cs">
       <DependentUpon>Student_Added.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Subjects\Subjects_Added.cs">
+    <Compile Include="GUI\Subjects\Subjects_Update.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Subjects\Subjects_Added.Designer.cs">
-      <DependentUpon>Subjects_Added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Subjects\Subjects_Updated.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Subjects\Subjects_Updated.Designer.cs">
-      <DependentUpon>Subjects_Updated.cs</DependentUpon>
+    <Compile Include="GUI\Subjects\Subjects_Update.Designer.cs">
+      <DependentUpon>Subjects_Update.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Faculty.cs">
       <DependentUpon>ReserveEducationModel.tt</DependentUpon>
@@ -191,11 +185,8 @@
     <EmbeddedResource Include="GUI\Students\Student_Added.resx">
       <DependentUpon>Student_Added.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Subjects\Subjects_Added.resx">
-      <DependentUpon>Subjects_Added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Subjects\Subjects_Updated.resx">
-      <DependentUpon>Subjects_Updated.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Subjects\Subjects_Update.resx">
+      <DependentUpon>Subjects_Update.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
