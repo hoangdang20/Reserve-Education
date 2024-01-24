@@ -14,34 +14,35 @@ namespace ReserveEducation.GUI.Specializations
 {
     public partial class Specializations_Updated_Frm : Form
     {
-        int id = -1;
-        List<Infrastructure.Faculty> faculties;
-        public Specializations_Updated_Frm(int specializationId, string name, string facultyName, List<Infrastructure.Faculty> faculties)
+        Specialization data;
+        public Specializations_Updated_Frm(Specialization _data = null)
         {
             InitializeComponent();
-            id = specializationId;
-            txtName_Specialization.Text = name;
-            cmb_Faculty.SelectedItem = facultyName;
-            this.faculties = faculties;
-            loadData(facultyName);
-
-        }
-
-        void loadData(string facultyName)
-        {
-            foreach (var item in faculties)
+            if (_data != null)
+            {
+                data = _data;
+                Specialization_btnUpdate.Text = "Sửa";
+            }
+            else
+            {
+                data = new Specialization();
+                Specialization_btnUpdate.Text = "Thêm";
+            }
+            Specialization_txtName.Text = data.Name;
+            var facultyTotal = FacultyService.Query(new Dtos.FacultiesDto.SearchFacultiesDto()
+            {
+                PageSize = 10000000,
+            });
+            foreach (var item in facultyTotal.Data)
             {
                 cmb_Faculty.Items.Add(item);
-                if (item.Name == facultyName)
-                {
-                    cmb_Faculty.SelectedItem = item;
-                }
             }
+            cmb_Faculty.SelectedIndex = facultyTotal.Data.FindIndex(x => x.ID == data.FacultyID);
         }
 
         private void Specialization_btnUpdate_Click(object sender, EventArgs e)
         {
-            if (txtName_Specialization.Text == string.Empty)
+            if (Specialization_txtName.Text == string.Empty)
             {
                 MessageBox.Show("Nhập tên chuyên ngành");
                 return;
@@ -51,11 +52,21 @@ namespace ReserveEducation.GUI.Specializations
                 MessageBox.Show("Chọn khoa");
                 return;
             }
-            bool result = SpecializationService.Update(id, txtName_Specialization.Text, cmb_Faculty.Text);
-            if (result == true)
+            bool result = data.ID > 0 ? SpecializationService.Update(data) : SpecializationService.Create(data);
+            if (result)
             {
                 this.Close();
             }
+        }
+
+        private void cmb_Faculty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            data.FacultyID = (cmb_Faculty.SelectedItem as Faculty).ID;
+        }
+
+        private void Specialization_txtName_TextChanged(object sender, EventArgs e)
+        {
+            data.Name = Specialization_txtName.Text;
         }
     }
 }

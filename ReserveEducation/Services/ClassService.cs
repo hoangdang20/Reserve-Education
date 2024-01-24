@@ -33,9 +33,8 @@ namespace ReserveEducation.Services
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
                 return false;
             }
         }
@@ -55,9 +54,8 @@ namespace ReserveEducation.Services
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message, "Lỗi");
                 return false;
             }
         }
@@ -66,13 +64,16 @@ namespace ReserveEducation.Services
             try
             {
                 var studentClassToDelete = db.StudentClasses.FirstOrDefault(c => c.ID == studentClassID);
+                if (studentClassToDelete.Students.Count() > 0)
+                {
+                    return false;
+                }
                 db.StudentClasses.Remove(studentClassToDelete);
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
                 return false;
             }
         }

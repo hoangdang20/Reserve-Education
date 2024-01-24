@@ -1,7 +1,7 @@
 ﻿using ReserveEducation.Dtos;
 using ReserveEducation.GUI;
 using ReserveEducation.GUI.Classes;
-using ReserveEducation.GUI.Faculty;
+using ReserveEducation.GUI.Faculties;
 using ReserveEducation.GUI.Subjects;
 using ReserveEducation.GUI.Specializations;
 using ReserveEducation.GUI.Students;
@@ -62,6 +62,37 @@ namespace ReserveEducation
         int studentsPage = 1;
         List<MappingStudentSubject> studentSubjects = new List<MappingStudentSubject>();
         List<MappingStudentSubject> studentSubjectsTotal = new List<MappingStudentSubject>();
+
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = tabControl1.SelectedIndex;
+            switch (selectedIndex)
+            {
+                case 0:
+                    loadDataFaculty();
+                    loadDataSpecialization();
+                    break;
+                case 1:
+                    loadDataStudentClass();
+                    loadDataStudent();
+                    break;
+                case 2:
+                    loadDataSpecialization();
+                    loadDataSubject();
+                    break;
+                case 3:
+                    loadDataSpecialization();
+                    loadDataStudentClass();
+                    break;
+                case 4:
+                    loadDataFaculty();
+                    loadDataSpecialization();
+                    break;
+                default:
+                    break;
+            }
+        }
         void loadData()
         {
             loadDataFaculty();
@@ -76,10 +107,11 @@ namespace ReserveEducation
             var data = FacultyService.Query(new Dtos.FacultiesDto.SearchFacultiesDto()
             {
                 Keyword = keywordFaculty,
-                PageSize = 20,
+                PageSize = 19,
             });
             faculties = data.Data;
             FacultyMapDataToGridView();
+            facultiesPage = 1;
             numberPageFaculty(data);
             facultiesTotalPage = data.TotalPage;
             loadComboboxDataFaculty();
@@ -114,7 +146,7 @@ namespace ReserveEducation
         }
         private void Faculties_btnAdd_Click(object sender, EventArgs e)
         {
-            FacultyAdded_Frm Add_Faculty = new FacultyAdded_Frm();
+            Faculty_Updated_Frm Add_Faculty = new Faculty_Updated_Frm();
             Add_Faculty.ShowDialog();
             loadDataFaculty();
         }
@@ -123,9 +155,7 @@ namespace ReserveEducation
             var senderGrid = (DataGridView)sender;
             if (e.ColumnIndex == senderGrid.Columns["Faculty_btnUpdate"].Index && e.RowIndex >= 0)
             {
-                var selectedRow = dgvFaculties.Rows[e.RowIndex];
-
-                Faculty_Updated_Frm updateFaculty = new Faculty_Updated_Frm(int.Parse(selectedRow.Cells[0].Value.ToString()), selectedRow.Cells[1].Value.ToString());
+                Faculty_Updated_Frm updateFaculty = new Faculty_Updated_Frm(faculties[e.RowIndex]);
                 updateFaculty.ShowDialog();
                 loadDataFaculty();
                 loadDataSpecialization();
@@ -161,7 +191,7 @@ namespace ReserveEducation
             {
                 Keyword = keywordFaculty,
                 NumberPage = facultiesPage,
-                PageSize = 20,
+                PageSize = 19,
             });
             faculties = data.Data;
             numberPageFaculty(data);
@@ -175,7 +205,7 @@ namespace ReserveEducation
             {
                 Keyword = keywordFaculty,
                 NumberPage = facultiesPage,
-                PageSize = 20,
+                PageSize = 19,
             });
             faculties = data.Data;
             FacultyMapDataToGridView();
@@ -189,7 +219,7 @@ namespace ReserveEducation
             {
                 Keyword = keywordFaculty,
                 NumberPage = facultiesPage,
-                PageSize = 20,
+                PageSize = 19,
             });
             faculties = data.Data;
             FacultyMapDataToGridView();
@@ -204,10 +234,11 @@ namespace ReserveEducation
             {
                 Keyword = keywordSpecialization,
                 FacultyID = idFaculty_FilterSpecialization,
-                PageSize = 20,
+                PageSize = 19,
             });
             specializations = data.Data;
             SpecializationsMapDataToGridView();
+            specializationsPage = 1;
             numberPageSpecialization(data);
             specializationsTotalPage = data.TotalPage;
             loadComboBoxDataSpecialization();
@@ -218,7 +249,6 @@ namespace ReserveEducation
             var data = SpecializationService.Query(new Dtos.SpecializationDto.SearchSpecializationDto()
             {
                 PageSize = 1000000,
-                FacultyID = idFaculty_FilterSpecialization,
             });
             specializationsTotal = data.Data;
             loadComboBoxSpecialization_Class();
@@ -227,7 +257,7 @@ namespace ReserveEducation
         void loadComboBoxFaculty_Specialization()
         {
             Specialization_cmbFaculty_Filter.Items.Clear();
-            Specialization_cmbFaculty_Filter.Items.Add("Chọn tất cả");
+            Specialization_cmbFaculty_Filter.Items.Add("Tất cả");
             foreach (var item in facultiesTotal)
             {
                 Specialization_cmbFaculty_Filter.Items.Add(item);
@@ -235,7 +265,7 @@ namespace ReserveEducation
         }
         private void Specialization_btnAdd_Click(object sender, EventArgs e)
         {
-            SpecializationAdded_Frm addSpecialization = new SpecializationAdded_Frm(facultiesTotal);
+            Specializations_Updated_Frm addSpecialization = new Specializations_Updated_Frm();
             addSpecialization.ShowDialog();
             loadDataSpecialization();
         }
@@ -243,12 +273,12 @@ namespace ReserveEducation
         {
             dgvSpecializations.Rows.Clear();
             dgvSpecializations.Columns[0].Visible = false;
-            foreach (var it in specializations)
+            foreach (var item in specializations)
             {
                 int index = dgvSpecializations.Rows.Add();
-                dgvSpecializations.Rows[index].Cells[0].Value = it.ID;
-                dgvSpecializations.Rows[index].Cells[1].Value = it.Name;
-                dgvSpecializations.Rows[index].Cells[2].Value = it.Faculty.Name;
+                dgvSpecializations.Rows[index].Cells[0].Value = item.ID;
+                dgvSpecializations.Rows[index].Cells[1].Value = item.Name;
+                dgvSpecializations.Rows[index].Cells[2].Value = item.Faculty.Name;
                 (dgvSpecializations.Rows[index].Cells[3] as DataGridViewButtonCell).Value = "Sửa";
                 (dgvSpecializations.Rows[index].Cells[4] as DataGridViewButtonCell).Value = "Xoá";
             }
@@ -259,8 +289,7 @@ namespace ReserveEducation
             var senderGrid = (DataGridView)sender;
             if (e.ColumnIndex == senderGrid.Columns["Specialization_btnUpdate"].Index && e.RowIndex >= 0)
             {
-                var selectedRow = dgvSpecializations.Rows[e.RowIndex];
-                Specializations_Updated_Frm updateSpecialization = new Specializations_Updated_Frm(int.Parse(selectedRow.Cells[0].Value.ToString()), selectedRow.Cells[1].Value.ToString(), selectedRow.Cells[2].Value.ToString(), facultiesTotal);
+                Specializations_Updated_Frm updateSpecialization = new Specializations_Updated_Frm(specializations[e.RowIndex]);
                 updateSpecialization.ShowDialog();
                 loadDataSpecialization();
                 loadDataStudentClass();
@@ -307,7 +336,7 @@ namespace ReserveEducation
                 Keyword = keywordSpecialization,
                 NumberPage = specializationsPage,
                 FacultyID = idFaculty_FilterSpecialization,
-                PageSize = 20,
+                PageSize = 19,
             });
             specializations = data.Data;
             SpecializationsMapDataToGridView();
@@ -327,7 +356,7 @@ namespace ReserveEducation
                 Keyword = keywordSpecialization,
                 FacultyID = idFaculty_FilterSpecialization,
                 NumberPage = specializationsPage,
-                PageSize = 20,
+                PageSize = 19,
             });
             specializations = data.Data;
             SpecializationsMapDataToGridView();
@@ -343,7 +372,7 @@ namespace ReserveEducation
                 Keyword = keywordSpecialization,
                 FacultyID = idFaculty_FilterSpecialization,
                 NumberPage = specializationsPage,
-                PageSize = 20,
+                PageSize = 19,
             });
             specializations = data.Data;
             SpecializationsMapDataToGridView();
@@ -358,10 +387,10 @@ namespace ReserveEducation
             {
                 Keyword = keywordClass,
                 SpecializationID = idSpecialization_FilterClasses,
-                PageSize = 20,
             });
             studentClasses = data.Data;
             StudentClassesMapDataToGridView();
+            classesPage = 1;
             numberPageClass(data);
             classesTotalPage = data.TotalPage;
             loadComboboxDataClass();
@@ -379,7 +408,7 @@ namespace ReserveEducation
         void loadComboBoxSpecialization_Class()
         {
             Classes_cmbSpecialization_Filter.Items.Clear();
-            Classes_cmbSpecialization_Filter.Items.Add("Chọn tất cả");
+            Classes_cmbSpecialization_Filter.Items.Add("");
             foreach (var item in specializationsTotal)
             {
                 Classes_cmbSpecialization_Filter.Items.Add(item);
@@ -413,7 +442,6 @@ namespace ReserveEducation
             var senderGrid = (DataGridView)sender;
             if (e.ColumnIndex == senderGrid.Columns["Class_btnUpdate"].Index)
             {
-                var selectedRow = dgvClasses.Rows[e.RowIndex];
                 Classes_Update_Frm updateClass = new Classes_Update_Frm(studentClasses[e.RowIndex]); ;
                 updateClass.ShowDialog();
                 loadDataStudentClass();
@@ -459,7 +487,6 @@ namespace ReserveEducation
                 Keyword = keywordClass,
                 SpecializationID = idSpecialization_FilterClasses,
                 NumberPage = specializationsPage,
-                PageSize = 20,
             });
             studentClasses = data.Data;
             StudentClassesMapDataToGridView();
@@ -479,7 +506,6 @@ namespace ReserveEducation
                 Keyword = keywordClass,
                 SpecializationID = idSpecialization_FilterClasses,
                 NumberPage = classesPage,
-                PageSize = 20,
             });
             classesTotalPage = data.TotalPage;
             studentClasses = data.Data;
@@ -496,7 +522,6 @@ namespace ReserveEducation
                 Keyword = keywordClass,
                 SpecializationID = idSpecialization_FilterClasses,
                 NumberPage = classesPage,
-                PageSize = 20,
             });
             studentClasses = data.Data;
             StudentClassesMapDataToGridView();
@@ -516,6 +541,7 @@ namespace ReserveEducation
             });
             subjects = data.Data;
             SubjectsMapDataToGridView();
+            subjectsPage = 1;
             numberPageSubject(data);
             subjectsTotalPage = data.TotalPage;
             loadComboBoxDataSubject();
@@ -537,6 +563,7 @@ namespace ReserveEducation
             {
                 Subjects_cmbSpecialization_Filter.Items.Add(item);
             }
+            Subjects_cmbSpecialization_Filter.SelectedIndex = 0;
         }
         void SubjectsMapDataToGridView()
         {
@@ -564,7 +591,8 @@ namespace ReserveEducation
             if (e.ColumnIndex == senderGrid.Columns["Subject_btnUpdate"].Index && e.RowIndex >= 0)
             {
                 var selectedRow = dgvSubjects.Rows[e.RowIndex];
-                SubjectsUpdated_Frm updateSubject = new SubjectsUpdated_Frm(subjects[e.RowIndex]);                updateSubject.ShowDialog();
+                SubjectsUpdated_Frm updateSubject = new SubjectsUpdated_Frm(subjects[e.RowIndex]);                
+                updateSubject.ShowDialog();
                 loadDataSubject();
 
             }
@@ -703,7 +731,7 @@ namespace ReserveEducation
         }
         private void Student_btnAdd_Click(object sender, EventArgs e)
         {
-            StudentAdded_Frm addStudent = new StudentAdded_Frm(studentClassesTotal);
+            StudentAdded_Frm addStudent = new StudentAdded_Frm();
             addStudent.ShowDialog();
             loadDataStudent();
             loadDataStudentClass();
@@ -714,9 +742,7 @@ namespace ReserveEducation
             var senderGrid = (DataGridView)sender;
             if (e.ColumnIndex == senderGrid.Columns["Student_btnUpdate"].Index && e.RowIndex >= 0)
             {
-                var selectedRow = dgvStudents.Rows[e.RowIndex];
-                Student selectedStudent = studentsTotal.FirstOrDefault(x => x.ID.ToString() == selectedRow.Cells[0].Value.ToString());
-                Student_Updated f = new Student_Updated(selectedStudent,subjectsTotal, specializationsTotal, studentSubjectsTotal,studentClassesTotal);
+                Student_Updated f = new Student_Updated(students[e.RowIndex]);
                 f.ShowDialog();
                 loadDataStudent();
                 loadDataStudentClass();
@@ -806,9 +832,6 @@ namespace ReserveEducation
             StudentsMapDataToGridView();
             numberPageStudent(data);
         }
-
-        #endregion
-
         void loadStudentSubject()
         {
             var data = StudentSubjectService.Query(new Dtos.StudentDto.SearchStudentSubjectDto()
@@ -817,14 +840,10 @@ namespace ReserveEducation
             });
             studentSubjectsTotal = data.Data;
         }
-        private void dgvStudents_DoubleClick(object sender, EventArgs e)
-        {
-            
-        }
+        #endregion
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
+
+
     }
 }

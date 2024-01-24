@@ -1,4 +1,5 @@
-﻿using ReserveEducation.Services;
+﻿using ReserveEducation.Infrastructure;
+using ReserveEducation.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,27 +10,47 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ReserveEducation.GUI.Faculty
+namespace ReserveEducation.GUI.Faculties
 {
     public partial class Faculty_Updated_Frm : Form
     {
-        int id = -1;
-        public Faculty_Updated_Frm(int facultyId, string name)
+        private Faculty data;
+
+        public Faculty_Updated_Frm(Faculty _data = null)
         {
             InitializeComponent();
-            id = facultyId;
-            txtName_Faculty.Text = name;
+            if (_data != null)
+            {
+                data = _data;
+                Faculty_btnUpdate.Text = "Sửa";
+
+            }
+            else
+            {
+                data = new Faculty();
+                Faculty_btnUpdate.Text = "Thêm";
+            }
+            txtName_Faculty.Text = data.Name;
         }
 
         private void Faculty_btnUpdate_Click(object sender, EventArgs e)
         {
-
-            bool result = FacultyService.Update(id,txtName_Faculty.Text);
-            if (result == true)
+            if(data.Name == string.Empty)
             {
-                // MessageBox.Show("Sửa khoa thành công", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Nhập tên khoa");
+                return;
+            }
+
+            bool result = data.ID > 0 ? FacultyService.Update(data) : FacultyService.Create(data);
+            if (result)
+            {
                 this.Close();
             }
+        }
+
+        private void txtName_Faculty_TextChanged(object sender, EventArgs e)
+        {
+            data.Name = txtName_Faculty.Text;
         }
     }
 }

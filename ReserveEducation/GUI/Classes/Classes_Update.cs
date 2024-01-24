@@ -21,10 +21,12 @@ namespace ReserveEducation.GUI.Classes
             if (_data != null)
             {
                 data = _data;
+                Classes_btnUpdate.Text = "Sửa";
             }
             else
             {
-                data =new StudentClass();
+                data = new StudentClass();
+                Classes_btnUpdate.Text = "Thêm";
             }
             Classes_txtName.Text = data.Name;
 
@@ -32,7 +34,7 @@ namespace ReserveEducation.GUI.Classes
             {
                 PageSize = 10000000,
             });
-            foreach(var item in pagedSpecialize.Data) 
+            foreach (var item in pagedSpecialize.Data)
             {
                 cmbSpecialization.Items.Add(item);
             }

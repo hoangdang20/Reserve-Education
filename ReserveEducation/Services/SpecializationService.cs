@@ -20,48 +20,41 @@ namespace ReserveEducation.Services
             return new PagedList<Specialization>(data, request.NumberPage, request.PageSize, data.Count());
         }
 
-        public static bool Create(string newSpecializationName, string newFacultyName)
+        public static bool Create(Specialization data)
         {
             try
             {
-                if (db.Specializations.Any(x => x.Name == newSpecializationName))
+                if (db.Specializations.Any(x => x.Name == data.Name))
                 {
                     MessageBox.Show("Tên chuyên ngành đã tồn tại", "Thông báo");
                     return false;
                 }
-                Specialization specialization = new Specialization
-                {
-                    Name = newSpecializationName,
-                    FacultyID = db.Faculties.FirstOrDefault(x => x.Name == newFacultyName).ID,
-                };
-                db.Specializations.Add(specialization);
+                db.Specializations.Add(data);
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
                 return false;
             }
         }
-        public static bool Update(int specializationID, string newspecializationName, string newfacultyName)
+        public static bool Update(Specialization data)
         {
             try
             {
-                var specializationToUpdate = db.Specializations.FirstOrDefault(s => s.ID == specializationID);
-                if (db.Specializations.Any(x => x.Name == newspecializationName && x.Faculty.Name == newfacultyName))
+                var specializationToUpdate = db.Specializations.FirstOrDefault(s => s.ID == data.ID);
+                if (db.Specializations.Any(x => x.Name == data.Name && x.FacultyID == data.FacultyID))
                 {
                     MessageBox.Show("Tên chuyên ngành đã tồn tại", "Thông báo");
                     return false;
                 }
-                specializationToUpdate.Name = newspecializationName;
-                specializationToUpdate.FacultyID = db.Faculties.FirstOrDefault(f => f.Name == newfacultyName).ID;
+                specializationToUpdate.Name = data.Name;
+                specializationToUpdate.FacultyID = data.FacultyID;
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -70,13 +63,16 @@ namespace ReserveEducation.Services
             try
             {
                 var specializationToDelete = db.Specializations.FirstOrDefault(f => f.ID == specializationID);
+                if (specializationToDelete.StudentClasses.Count() > 0 || specializationToDelete.Subjects.Count() > 0)
+                {
+                    return false;
+                }
                 db.Specializations.Remove(specializationToDelete);
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
                 return false;
             }
         }

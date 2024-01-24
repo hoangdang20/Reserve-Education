@@ -77,6 +77,10 @@ namespace ReserveEducation.Services
             try
             {
                 var subjectToDelete = db.Subjects.FirstOrDefault(f => f.ID == subjectID);
+                if (subjectToDelete.MappingStudentSubjects.Count() > 0)
+                {
+                    return false;
+                }
                 db.Subjects.Remove(subjectToDelete);
                 db.SaveChanges();
                 return true;

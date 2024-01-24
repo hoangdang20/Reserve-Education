@@ -15,66 +15,87 @@ namespace ReserveEducation.GUI.StudentSubject
 {
     public partial class Student_Updated : Form
     {
-        List<Subject> subjects;
-        List<Subject> subjectsToTal;
         string keywordSubject = null;
-        int idSpecialization_FilterSubject = -1;
-        int subjectsTotalPage = 0;
-        int subjectsPage = 1;
-
-
-        List<Infrastructure.Specialization> specializations;
-        List<MappingStudentSubject> studentSubjects;
-        int studentID = -1;
-        List<StudentClass> classStudents;
-
+        int? idSpecialization_FilterSubject = null;
+        Student data;
+        List<Subject> subjects;
+        List<Specialization> specializations;
         int SelectedFilter = 0;
-        public Student_Updated(Student student, List<Subject> subjects, List<Infrastructure.Specialization> specializations, List<MappingStudentSubject> studentSubjects, List<StudentClass> classStudents)
+        public Student_Updated(Student _data)
         {
             InitializeComponent();
-            Student_txtStudentCode.Text = student.Code;
-            Student_txtStudentName.Text = student.Name;
-            studentID = student.ID;
+            data = _data;
 
-            this.subjects = subjects;
-            this.subjectsToTal = subjects;
-            this.specializations = specializations;
-            this.studentSubjects = studentSubjects;
-            this.classStudents = classStudents;
-            loadSubject();
-            loadComboboxSpecialization();
-            loadClasses(student.StudentClass.Name);
+            Student_txtStudentCode.Text = data.Code;
+            Student_txtStudentName.Text = data.Name;
+
+            var subjectsTotal = SubjectService.Query(new Dtos.SubjectDto.SearchSubjectDto()
+            {
+                PageSize = 10000000,
+            });
+            subjects = subjectsTotal.Data;
+
+            loadSubjectChecked();
+            loadSpecialization();
+            loadClasses(data.StudentClass.Name);
             loadComboboxSelcet();
-            StudentSubject_txtSelectedSubjectTotal.Text = cklbSubjects.CheckedItems.Count.ToString();
-        }
 
+            var studentSubject = StudentSubjectService.Query(new Dtos.StudentDto.SearchStudentSubjectDto()
+            {
+                PageSize = 100000000,
+                StudentID = data.ID,
+            }).Data;
+
+            // StudentSubject_txtSelectedSubjectTotal.Text = studentSubject.Count().ToString();
+        }
+        void loadSpecialization()
+        {
+            var specializationTotal = SpecializationService.Query(new Dtos.SpecializationDto.SearchSpecializationDto()
+            {
+                PageSize = 10000000,
+            });
+            specializations = specializationTotal.Data;
+            StudentSubject_cmbSpecializationFilter.Items.Add("Tất cả");
+            foreach (var item in specializations)
+            {
+                StudentSubject_cmbSpecializationFilter.Items.Add(item);
+            }
+            StudentSubject_cmbSpecializationFilter.SelectedIndex = 0;
+        }
         void loadClasses(string className)
         {
-            foreach (var item in classStudents)
+            var studentClassesTotal = ClassService.Query(new Dtos.ClassDto.SearchClassDto()
+            {
+                PageSize = 10000000,
+            });
+            foreach (var item in studentClassesTotal.Data)
             {
                 Student_cmbClasses.Items.Add(item);
-                if (item.Name == className)
-                {
-                    Student_cmbClasses.SelectedItem = item;
-                }
             }
+            Student_cmbClasses.SelectedIndex = studentClassesTotal.Data.FindIndex(x => x.ID == data.StudentClassID);
         }
-        void loadSubject()
+        void loadSubjectChecked()
         {
+            var studentSubject = StudentSubjectService.Query(new Dtos.StudentDto.SearchStudentSubjectDto()
+            {
+                PageSize = 10000000,
+                StudentID = data.ID,
+            });
+            var studentSubjects = studentSubject.Data;
             cklbSubjects.Items.Clear();
             foreach (var item in subjects)
             {
                 if (SelectedFilter == 0)
                 {
                     int index = cklbSubjects.Items.Add(item.Name);
-                    if (studentSubjects.Any(x => x.StudentID == studentID && x.SubjectID == item.ID))
+                    if (studentSubjects.Any(x => x.StudentID == data.ID && x.SubjectID == item.ID))
                     {
                         cklbSubjects.SetItemChecked(index, true);
                     }
                 }
                 else if (SelectedFilter == 1)
                 {
-                    if (studentSubjects.Any(x => x.StudentID == studentID && x.SubjectID == item.ID))
+                    if (studentSubjects.Any(x => x.StudentID == data.ID && x.SubjectID == item.ID))
                     {
                         int index = cklbSubjects.Items.Add(item.Name);
                         cklbSubjects.SetItemChecked(index, true);
@@ -82,50 +103,44 @@ namespace ReserveEducation.GUI.StudentSubject
                 }
                 else if (SelectedFilter == 2)
                 {
-                    if (!studentSubjects.Any(x => x.StudentID == studentID && x.SubjectID == item.ID))
+                    if (!studentSubjects.Any(x => x.StudentID == data.ID && x.SubjectID == item.ID))
                     {
                         cklbSubjects.Items.Add(item.Name);
                     }
                 }
-
             }
         }
         void loadComboboxSelcet()
         {
+            StudentSubject_cmbSelectFilter.Items.Clear();
             StudentSubject_cmbSelectFilter.Items.Add("Tất cả");
             StudentSubject_cmbSelectFilter.SelectedIndex = 0;
             StudentSubject_cmbSelectFilter.Items.Add("Đã chọn");
             StudentSubject_cmbSelectFilter.Items.Add("Chưa chọn");
         }
-        void loadComboboxSpecialization()
-        {
-            StudentSubject_cmbSpecializationFilter.Items.Add("");
-            foreach (var item in specializations)
-            {
-                StudentSubject_cmbSpecializationFilter.Items.Add(item);
-            }
-        }
 
         private void cklbSubjects_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             var selectedItem = cklbSubjects.Items[e.Index].ToString();
-            if (e.NewValue == CheckState.Checked)
+            var subject = subjects.FirstOrDefault(x => x.Name == selectedItem);
+            if (e.CurrentValue != e.NewValue)
             {
-                bool result = StudentSubjectService.Create(selectedItem, Student_txtStudentCode.Text);
-                
+                if (e.NewValue == CheckState.Checked)
+                {
+                    bool result = StudentSubjectService.Create(data, subject);
+                }
+                else if (e.NewValue == CheckState.Unchecked)
+                {
+                    bool result = StudentSubjectService.Delete(data, subject);
+                }
+                // StudentSubject_txtSelectedSubjectTotal.Text = cklbSubjects.CheckedItems.Count.ToString();
             }
-            else
-            {
-                bool result = StudentSubjectService.Delete(selectedItem, Student_txtStudentCode.Text);
-            }
-            StudentSubject_txtSelectedSubjectTotal.Text = cklbSubjects.CheckedItems.Count.ToString();
+
         }
 
         private void StudentSubject_btnFilter_Click(object sender, EventArgs e)
         {
-            keywordSubject = StudentSubject_txtKeywordFilter.Text.Trim();
-            subjectsPage = 1;
-            idSpecialization_FilterSubject = -1;
+            idSpecialization_FilterSubject = null;
             if (!string.IsNullOrEmpty(StudentSubject_cmbSpecializationFilter.Text.Trim()))
             {
                 var selectedSpecialization = specializations.FirstOrDefault(f => f.Name == StudentSubject_cmbSpecializationFilter.Text);
@@ -136,14 +151,13 @@ namespace ReserveEducation.GUI.StudentSubject
             }
             var data = SubjectService.Query(new Dtos.SubjectDto.SearchSubjectDto()
             {
-                Keyword = keywordSubject,
-                NumberPage = subjectsPage,
                 SpecializationID = idSpecialization_FilterSubject,
+                Keyword = StudentSubject_txtKeywordFilter.Text.Trim(),
                 PageSize = 10000000,
             });
             subjects = data.Data;
             SelectedFilter = StudentSubject_cmbSelectFilter.SelectedIndex;
-            loadSubject();
+            loadSubjectChecked();
         }
 
         private void Student_btnUpdate_Click(object sender, EventArgs e)
@@ -165,11 +179,28 @@ namespace ReserveEducation.GUI.StudentSubject
                 MessageBox.Show("Chọn lớp học", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            bool result = StudentService.Update(studentID, Student_txtStudentName.Text, Student_txtStudentCode.Text, Student_cmbClasses.Text);
+            bool result = StudentService.Update(data);
             if (result == true)
             {
                 this.Close();
             }
         }
+
+        private void Student_txtStudentName_TextChanged(object sender, EventArgs e)
+        {
+            data.Name = Student_txtStudentName.Text;
+        }
+
+        private void Student_txtStudentCode_TextChanged(object sender, EventArgs e)
+        {
+            data.Code = Student_txtStudentCode.Text;
+        }
+
+        private void Student_cmbClasses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            data.StudentClassID = (Student_cmbClasses.SelectedItem as StudentClass).ID;
+
+        }
+
     }
 }

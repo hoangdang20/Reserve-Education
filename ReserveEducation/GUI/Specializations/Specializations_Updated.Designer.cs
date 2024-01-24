@@ -30,7 +30,7 @@
         {
             this.Specialization_btnUpdate = new System.Windows.Forms.Button();
             this.cmb_Faculty = new System.Windows.Forms.ComboBox();
-            this.txtName_Specialization = new System.Windows.Forms.TextBox();
+            this.Specialization_txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -53,13 +53,15 @@
             this.cmb_Faculty.Name = "cmb_Faculty";
             this.cmb_Faculty.Size = new System.Drawing.Size(357, 21);
             this.cmb_Faculty.TabIndex = 7;
+            this.cmb_Faculty.SelectedIndexChanged += new System.EventHandler(this.cmb_Faculty_SelectedIndexChanged);
             // 
-            // txtName_Specialization
+            // Specialization_txtName
             // 
-            this.txtName_Specialization.Location = new System.Drawing.Point(15, 25);
-            this.txtName_Specialization.Name = "txtName_Specialization";
-            this.txtName_Specialization.Size = new System.Drawing.Size(357, 20);
-            this.txtName_Specialization.TabIndex = 6;
+            this.Specialization_txtName.Location = new System.Drawing.Point(15, 25);
+            this.Specialization_txtName.Name = "Specialization_txtName";
+            this.Specialization_txtName.Size = new System.Drawing.Size(357, 20);
+            this.Specialization_txtName.TabIndex = 6;
+            this.Specialization_txtName.TextChanged += new System.EventHandler(this.Specialization_txtName_TextChanged);
             // 
             // label2
             // 
@@ -86,13 +88,13 @@
             this.ClientSize = new System.Drawing.Size(384, 120);
             this.Controls.Add(this.Specialization_btnUpdate);
             this.Controls.Add(this.cmb_Faculty);
-            this.Controls.Add(this.txtName_Specialization);
+            this.Controls.Add(this.Specialization_txtName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Specializations_Updated_Frm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Sửa khoa";
+            this.Text = "Thông tin chuyên ngành";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,7 +104,7 @@
 
         private System.Windows.Forms.Button Specialization_btnUpdate;
         private System.Windows.Forms.ComboBox cmb_Faculty;
-        private System.Windows.Forms.TextBox txtName_Specialization;
+        private System.Windows.Forms.TextBox Specialization_txtName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }
