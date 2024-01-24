@@ -150,7 +150,6 @@
     <Compile Include="Services\FacultyService.cs" />
     <Compile Include="Services\SpecializationService.cs" />
     <Compile Include="Services\StudentService.cs" />
-    <Compile Include="Services\StudentSubjectService.cs" />
     <Compile Include="Services\SubjectService.cs" />
     <EmbeddedResource Include="GUI\Classes\Classes_Update.resx">
       <DependentUpon>Classes_Update.cs</DependentUpon>

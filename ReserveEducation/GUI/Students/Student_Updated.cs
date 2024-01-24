@@ -16,7 +16,7 @@ namespace ReserveEducation.GUI.StudentSubject
     public partial class Student_Updated : Form
     {
         string keywordSubject = null;
-        int ?idSpecialization_FilterSubject = null;
+        int? idSpecialization_FilterSubject = null;
         Student data;
         List<Subject> subjects;
         List<Specialization> specializations;
@@ -39,7 +39,14 @@ namespace ReserveEducation.GUI.StudentSubject
             loadSpecialization();
             loadClasses(data.StudentClass.Name);
             loadComboboxSelcet();
-            StudentSubject_txtSelectedSubjectTotal.Text = cklbSubjects.CheckedItems.Count.ToString();
+
+            var studentSubject = StudentSubjectService.Query(new Dtos.StudentDto.SearchStudentSubjectDto()
+            {
+                PageSize = 100000000,
+                StudentID = data.ID,
+            }).Data;
+
+            StudentSubject_txtSelectedSubjectTotal.Text = studentSubject.Count().ToString();
         }
         void loadSpecialization()
         {
@@ -53,6 +60,7 @@ namespace ReserveEducation.GUI.StudentSubject
             {
                 StudentSubject_cmbSpecializationFilter.Items.Add(item);
             }
+            StudentSubject_cmbSpecializationFilter.SelectedIndex = 0;
         }
         void loadClasses(string className)
         {
@@ -60,7 +68,6 @@ namespace ReserveEducation.GUI.StudentSubject
             {
                 PageSize = 10000000,
             });
-            StudentSubject_cmbSpecializationFilter.Items.Add("Tất cả");
             foreach (var item in studentClassesTotal.Data)
             {
                 Student_cmbClasses.Items.Add(item);
@@ -72,6 +79,7 @@ namespace ReserveEducation.GUI.StudentSubject
             var studentSubject = StudentSubjectService.Query(new Dtos.StudentDto.SearchStudentSubjectDto()
             {
                 PageSize = 10000000,
+                StudentID = data.ID,
             });
             var studentSubjects = studentSubject.Data;
             cklbSubjects.Items.Clear();
@@ -104,6 +112,7 @@ namespace ReserveEducation.GUI.StudentSubject
         }
         void loadComboboxSelcet()
         {
+            StudentSubject_cmbSelectFilter.Items.Clear();
             StudentSubject_cmbSelectFilter.Items.Add("Tất cả");
             StudentSubject_cmbSelectFilter.SelectedIndex = 0;
             StudentSubject_cmbSelectFilter.Items.Add("Đã chọn");
@@ -113,19 +122,25 @@ namespace ReserveEducation.GUI.StudentSubject
         private void cklbSubjects_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             var selectedItem = cklbSubjects.Items[e.Index].ToString();
-            if (e.NewValue == CheckState.Checked)
+            var subject = subjects.FirstOrDefault(x => x.Name == selectedItem);
+            if (e.CurrentValue != e.NewValue)
             {
-                bool result = StudentSubjectService.Create(selectedItem, Student_txtStudentCode.Text);
+                if (e.NewValue == CheckState.Checked)
+                {
+                    bool result = StudentSubjectService.Create(data, subject);
+                }
+                else if (e.NewValue == CheckState.Unchecked)
+                {
+                    bool result = StudentSubjectService.Delete(data, subject);
+                }
+                StudentSubject_txtSelectedSubjectTotal.Text = cklbSubjects.CheckedItems.Count.ToString();
             }
-            else
-            {
-                bool result = StudentSubjectService.Delete(selectedItem, Student_txtStudentCode.Text);
-            }
-            StudentSubject_txtSelectedSubjectTotal.Text = cklbSubjects.CheckedItems.Count.ToString();
+
         }
 
         private void StudentSubject_btnFilter_Click(object sender, EventArgs e)
         {
+            idSpecialization_FilterSubject = null;
             if (!string.IsNullOrEmpty(StudentSubject_cmbSpecializationFilter.Text.Trim()))
             {
                 var selectedSpecialization = specializations.FirstOrDefault(f => f.Name == StudentSubject_cmbSpecializationFilter.Text);
@@ -139,7 +154,7 @@ namespace ReserveEducation.GUI.StudentSubject
                 SpecializationID = idSpecialization_FilterSubject,
                 Keyword = StudentSubject_txtKeywordFilter.Text.Trim(),
                 PageSize = 10000000,
-            }) ;
+            });
             subjects = data.Data;
             SelectedFilter = StudentSubject_cmbSelectFilter.SelectedIndex;
             loadSubjectChecked();
@@ -186,5 +201,6 @@ namespace ReserveEducation.GUI.StudentSubject
             data.StudentClassID = (Student_cmbClasses.SelectedItem as StudentClass).ID;
 
         }
+
     }
 }
