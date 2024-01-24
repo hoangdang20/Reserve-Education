@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ReserveEducationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Specializations" Relationship="Self.Specialization_FK_Faculty" FromRole="Faculty" ToRole="Specialization" />
+  </EntityType>
+  <EntityType Name="MappingStudentSubject">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubjectID" Type="Int32" Nullable="false" />
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="IsPassed" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Student" Relationship="Self.MappingStudentSubject_FK_Student" FromRole="MappingStudentSubject" ToRole="Student" />
+    <NavigationProperty Name="Subject" Relationship="Self.MappingStudentSubject_FK_Subject" FromRole="MappingStudentSubject" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="Specialization">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FacultyID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Faculty" Relationship="Self.Specialization_FK_Faculty" FromRole="Specialization" ToRole="Faculty" />
+    <NavigationProperty Name="StudentClasses" Relationship="Self.StudentClass_FK_Specialization" FromRole="Specialization" ToRole="StudentClass" />
+    <NavigationProperty Name="Subjects" Relationship="Self.Subject_FK_Specialization" FromRole="Specialization" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StudentClassID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MappingStudentSubjects" Relationship="Self.MappingStudentSubject_FK_Student" FromRole="Student" ToRole="MappingStudentSubject" />
+    <NavigationProperty Name="StudentClass" Relationship="Self.Student_FK_StudentClass" FromRole="Student" ToRole="StudentClass" />
+  </EntityType>
+  <EntityType Name="StudentClass">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SpecializationID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Specialization" Relationship="Self.StudentClass_FK_Specialization" FromRole="StudentClass" ToRole="Specialization" />
+    <NavigationProperty Name="Students" Relationship="Self.Student_FK_StudentClass" FromRole="StudentClass" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SpecializationID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MappingStudentSubjects" Relationship="Self.MappingStudentSubject_FK_Subject" FromRole="Subject" ToRole="MappingStudentSubject" />
+    <NavigationProperty Name="Specialization" Relationship="Self.Subject_FK_Specialization" FromRole="Subject" ToRole="Specialization" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="StudentSubjectView">
+    <Key>
+      <PropertyRef Name="StudentID" />
+      <PropertyRef Name="StudentCode" />
+      <PropertyRef Name="StudentName" />
+      <PropertyRef Name="SubjectID" />
+      <PropertyRef Name="SubjectCode" />
+      <PropertyRef Name="SubjectName" />
+      <PropertyRef Name="IsPassed" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" />
+    <Property Name="StudentCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StudentName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SubjectID" Type="Int32" Nullable="false" />
+    <Property Name="SubjectCode" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SubjectName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsPassed" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="Specialization_FK_Faculty">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="1" />
+    <End Role="Specialization" Type="Self.Specialization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Specialization">
+        <PropertyRef Name="FacultyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MappingStudentSubject_FK_Student">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="MappingStudentSubject" Type="Self.MappingStudentSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MappingStudentSubject">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MappingStudentSubject_FK_Subject">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+    <End Role="MappingStudentSubject" Type="Self.MappingStudentSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MappingStudentSubject">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StudentClass_FK_Specialization">
+    <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
+    <End Role="StudentClass" Type="Self.StudentClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specialization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StudentClass">
+        <PropertyRef Name="SpecializationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Subject_FK_Specialization">
+    <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
+    <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Specialization">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="SpecializationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Student_FK_StudentClass">
+    <End Role="StudentClass" Type="Self.StudentClass" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentClass">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="StudentClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ReserveEducationEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Faculties" EntityType="Self.Faculty" />
+    <EntitySet Name="MappingStudentSubjects" EntityType="Self.MappingStudentSubject" />
+    <EntitySet Name="Specializations" EntityType="Self.Specialization" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="StudentClasses" EntityType="Self.StudentClass" />
+    <EntitySet Name="Subjects" EntityType="Self.Subject" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="StudentSubjectViews" EntityType="Self.StudentSubjectView" />
+    <AssociationSet Name="Specialization_FK_Faculty" Association="Self.Specialization_FK_Faculty">
+      <End Role="Faculty" EntitySet="Faculties" />
+      <End Role="Specialization" EntitySet="Specializations" />
+    </AssociationSet>
+    <AssociationSet Name="MappingStudentSubject_FK_Student" Association="Self.MappingStudentSubject_FK_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="MappingStudentSubject" EntitySet="MappingStudentSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="MappingStudentSubject_FK_Subject" Association="Self.MappingStudentSubject_FK_Subject">
+      <End Role="Subject" EntitySet="Subjects" />
+      <End Role="MappingStudentSubject" EntitySet="MappingStudentSubjects" />
+    </AssociationSet>
+    <AssociationSet Name="StudentClass_FK_Specialization" Association="Self.StudentClass_FK_Specialization">
+      <End Role="Specialization" EntitySet="Specializations" />
+      <End Role="StudentClass" EntitySet="StudentClasses" />
+    </AssociationSet>
+    <AssociationSet Name="Subject_FK_Specialization" Association="Self.Subject_FK_Specialization">
+      <End Role="Specialization" EntitySet="Specializations" />
+      <End Role="Subject" EntitySet="Subjects" />
+    </AssociationSet>
+    <AssociationSet Name="Student_FK_StudentClass" Association="Self.Student_FK_StudentClass">
+      <End Role="StudentClass" EntitySet="StudentClasses" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
