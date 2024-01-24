@@ -20,50 +20,42 @@ namespace ReserveEducation.Services
             return new PagedList<Student>(data, request.NumberPage, request.PageSize, data.Count());
         }
 
-        public static bool Create(string newStudentName,string newStudentCode, string newClassName)
+        public static bool Create(Student student)
         {
             try
             {
-                if (db.Students.Any(x => x.Code == newStudentCode))
+                if (db.Students.Any(x => x.Code == student.Code))
                 {
                     MessageBox.Show("Mã sinh viên đã tồn tại", "Thông báo");
                     return false;
                 }
-                Student student = new Student
-                {
-                    Name = newStudentName,
-                    Code = newStudentCode,
-                    StudentClassID = db.StudentClasses.FirstOrDefault(x => x.Name == newClassName).ID,
-                };
                 db.Students.Add(student);
                 db.SaveChanges();
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
                 return false;
             }
         }
-        public static bool Update(int studentID, string newStudentName, string newStudentCode, string newClassName)
+        public static bool Update(Student student)
         {
             try
             {
-                var studentToUpdate = db.Students.FirstOrDefault(s => s.ID == studentID);
-                if (db.Students.Any(x => x.Name == newStudentCode && x.ID != studentID))
+                var studentToUpdate = db.Students.FirstOrDefault(s => s.ID == student.ID);
+                if (db.Students.Any(x => x.Code == student.Code && x.ID != student.ID))
                 {
-                    MessageBox.Show("Sinh viên đã tồn tại", "Thông báo");
+                    MessageBox.Show("Mã sinh viên đã tồn tại", "Thông báo");
                     return false;
                 }
-                studentToUpdate.Name = newStudentName;
-                studentToUpdate.Code = newStudentCode;
-                studentToUpdate.StudentClassID = db.StudentClasses.FirstOrDefault(f => f.Name == newClassName).ID;
+                studentToUpdate.Name = student.Name;
+                studentToUpdate.Code = student.Code;
+                studentToUpdate.StudentClassID = student.StudentClassID;
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -76,9 +68,8 @@ namespace ReserveEducation.Services
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
                 return false;
             }
         }

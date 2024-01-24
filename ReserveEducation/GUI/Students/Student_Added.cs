@@ -15,24 +15,22 @@ namespace ReserveEducation.GUI.Students
 {
     public partial class StudentAdded_Frm : Form
     {
-        List<StudentClass> studentClasses;
-        public StudentAdded_Frm(List<StudentClass> studentClasses)
+        Student data;
+        public StudentAdded_Frm()
         {
             InitializeComponent();
-            this.studentClasses = studentClasses;
-        }
 
-        private void StudentAdded_Frm_Load(object sender, EventArgs e)
-        {
-            loadData();
-        }
-        void loadData()
-        {
-            foreach (var item in studentClasses)
+            var studentClasses = ClassService.Query(new Dtos.ClassDto.SearchClassDto()
+            {
+                PageSize = 10000000,
+            });
+            foreach (var item in studentClasses.Data)
             {
                 cmbClasses_Student.Items.Add(item);
             }
         }
+
+
 
         private void Student_btnAdd_Click(object sender, EventArgs e)
         {
@@ -54,7 +52,7 @@ namespace ReserveEducation.GUI.Students
                 return;
             }
 
-            bool result = StudentService.Create(txtStudentName.Text, txtStudentCode.Text, cmbClasses_Student.Text);
+            bool result = StudentService.Create(data);
             if (result == true)
             {
                 MessageBox.Show("Thêm sinh viên thành công");
@@ -64,6 +62,21 @@ namespace ReserveEducation.GUI.Students
                 MessageBox.Show("Thêm sinh viên không thành công");
             }
             this.Close();
+        }
+
+        private void txtStudentName_TextChanged(object sender, EventArgs e)
+        {
+            data.Name = txtStudentName.Text;
+        }
+
+        private void txtStudentCode_TextChanged(object sender, EventArgs e)
+        {
+            data.Code = txtStudentCode.Text;
+        }
+
+        private void cmbClasses_Student_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            data.StudentClassID = (cmbClasses_Student.SelectedItem as StudentClass).ID;
         }
     }
 }

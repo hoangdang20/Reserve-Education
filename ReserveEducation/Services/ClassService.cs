@@ -33,9 +33,8 @@ namespace ReserveEducation.Services
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
                 return false;
             }
         }
@@ -55,9 +54,8 @@ namespace ReserveEducation.Services
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message, "Lỗi");
                 return false;
             }
         }
@@ -70,9 +68,8 @@ namespace ReserveEducation.Services
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
                 return false;
             }
         }
