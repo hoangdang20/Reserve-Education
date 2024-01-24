@@ -33,7 +33,7 @@ namespace ReserveEducation.Services
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }
@@ -63,6 +63,8 @@ namespace ReserveEducation.Services
         {
             try
             {
+                var tmp = db.MappingStudentSubjects.Where(x => x.StudentID == studentID);
+                db.MappingStudentSubjects.RemoveRange(tmp);
                 var studentToDelete = db.Students.FirstOrDefault(f => f.ID == studentID);
                 db.Students.Remove(studentToDelete);
                 db.SaveChanges();

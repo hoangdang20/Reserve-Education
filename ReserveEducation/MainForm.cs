@@ -62,6 +62,37 @@ namespace ReserveEducation
         int studentsPage = 1;
         List<MappingStudentSubject> studentSubjects = new List<MappingStudentSubject>();
         List<MappingStudentSubject> studentSubjectsTotal = new List<MappingStudentSubject>();
+
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = tabControl1.SelectedIndex;
+            switch (selectedIndex)
+            {
+                case 0:
+                    loadDataFaculty();
+                    loadDataSpecialization();
+                    break;
+                case 1:
+                    loadDataStudentClass();
+                    loadDataStudent();
+                    break;
+                case 2:
+                    loadDataSpecialization();
+                    loadDataSubject();
+                    break;
+                case 3:
+                    loadDataSpecialization();
+                    loadDataStudentClass();
+                    break;
+                case 4:
+                    loadDataFaculty();
+                    loadDataSpecialization();
+                    break;
+                default:
+                    break;
+            }
+        }
         void loadData()
         {
             loadDataFaculty();
@@ -510,6 +541,7 @@ namespace ReserveEducation
             });
             subjects = data.Data;
             SubjectsMapDataToGridView();
+            subjectsPage = 1;
             numberPageSubject(data);
             subjectsTotalPage = data.TotalPage;
             loadComboBoxDataSubject();
@@ -531,6 +563,7 @@ namespace ReserveEducation
             {
                 Subjects_cmbSpecialization_Filter.Items.Add(item);
             }
+            Subjects_cmbSpecialization_Filter.SelectedIndex = 0;
         }
         void SubjectsMapDataToGridView()
         {
@@ -558,7 +591,8 @@ namespace ReserveEducation
             if (e.ColumnIndex == senderGrid.Columns["Subject_btnUpdate"].Index && e.RowIndex >= 0)
             {
                 var selectedRow = dgvSubjects.Rows[e.RowIndex];
-                SubjectsUpdated_Frm updateSubject = new SubjectsUpdated_Frm(subjects[e.RowIndex]);                updateSubject.ShowDialog();
+                SubjectsUpdated_Frm updateSubject = new SubjectsUpdated_Frm(subjects[e.RowIndex]);                
+                updateSubject.ShowDialog();
                 loadDataSubject();
 
             }
@@ -798,9 +832,6 @@ namespace ReserveEducation
             StudentsMapDataToGridView();
             numberPageStudent(data);
         }
-
-        #endregion
-
         void loadStudentSubject()
         {
             var data = StudentSubjectService.Query(new Dtos.StudentDto.SearchStudentSubjectDto()
@@ -809,14 +840,10 @@ namespace ReserveEducation
             });
             studentSubjectsTotal = data.Data;
         }
-        private void dgvStudents_DoubleClick(object sender, EventArgs e)
-        {
-            
-        }
+        #endregion
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
+
+
     }
 }

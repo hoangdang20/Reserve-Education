@@ -440,7 +440,6 @@
             this.dgvStudents.Size = new System.Drawing.Size(1229, 471);
             this.dgvStudents.TabIndex = 13;
             this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
-            this.dgvStudents.DoubleClick += new System.EventHandler(this.dgvStudents_DoubleClick);
             // 
             // dataGridViewTextBoxColumn6
             // 

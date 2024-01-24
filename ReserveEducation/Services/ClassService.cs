@@ -64,6 +64,10 @@ namespace ReserveEducation.Services
             try
             {
                 var studentClassToDelete = db.StudentClasses.FirstOrDefault(c => c.ID == studentClassID);
+                if (studentClassToDelete.Students.Count() > 0)
+                {
+                    return false;
+                }
                 db.StudentClasses.Remove(studentClassToDelete);
                 db.SaveChanges();
                 return true;

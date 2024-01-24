@@ -44,8 +44,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cklbSubjects = new System.Windows.Forms.CheckedListBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.StudentSubject_txtSelectedSubjectTotal = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.Student_btnUpdate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -212,28 +210,9 @@
             this.cklbSubjects.TabIndex = 13;
             this.cklbSubjects.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.cklbSubjects_ItemCheck);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(246, 219);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Số môn đã chọn";
-            // 
-            // StudentSubject_txtSelectedSubjectTotal
-            // 
-            this.StudentSubject_txtSelectedSubjectTotal.Location = new System.Drawing.Point(249, 235);
-            this.StudentSubject_txtSelectedSubjectTotal.Name = "StudentSubject_txtSelectedSubjectTotal";
-            this.StudentSubject_txtSelectedSubjectTotal.ReadOnly = true;
-            this.StudentSubject_txtSelectedSubjectTotal.Size = new System.Drawing.Size(156, 20);
-            this.StudentSubject_txtSelectedSubjectTotal.TabIndex = 10;
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.cklbSubjects);
-            this.groupBox3.Controls.Add(this.StudentSubject_txtSelectedSubjectTotal);
             this.groupBox3.Controls.Add(this.groupBox2);
             this.groupBox3.Location = new System.Drawing.Point(190, 12);
             this.groupBox3.Name = "groupBox3";
@@ -268,7 +247,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -287,8 +265,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button StudentSubject_btnFilter;
         private System.Windows.Forms.CheckedListBox cklbSubjects;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox StudentSubject_txtSelectedSubjectTotal;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox StudentSubject_cmbSelectFilter;
         private System.Windows.Forms.GroupBox groupBox3;
