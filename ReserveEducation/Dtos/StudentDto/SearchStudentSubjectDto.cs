@@ -11,6 +11,7 @@ namespace ReserveEducation.Dtos.StudentDto
         public string Keyword { get; set; }
         public int? StudentID { get; set; } = null;
         public int? SubjectID { get; set; } = null;
+        public bool? IsPassed { get; set; } = null;
 
     }
 }

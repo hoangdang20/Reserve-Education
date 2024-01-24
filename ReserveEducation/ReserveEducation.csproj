@@ -93,6 +93,12 @@
     <Compile Include="GUI\Students\Student_Added.Designer.cs">
       <DependentUpon>Student_Added.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Subjects\SubjectStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Subjects\SubjectStudent.Designer.cs">
+      <DependentUpon>SubjectStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Subjects\Subjects_Update.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,9 +160,11 @@
     <Compile Include="Services\SubjectService.cs" />
     <EmbeddedResource Include="GUI\Classes\Classes_Update.resx">
       <DependentUpon>Classes_Update.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Faculties\Faculties_Update.resx">
       <DependentUpon>Faculties_Update.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Specializations\Specializations_Updated.resx">
       <DependentUpon>Specializations_Updated.cs</DependentUpon>
@@ -166,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Students\Student_Added.resx">
       <DependentUpon>Student_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Subjects\SubjectStudent.resx">
+      <DependentUpon>SubjectStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Subjects\Subjects_Update.resx">
       <DependentUpon>Subjects_Update.cs</DependentUpon>

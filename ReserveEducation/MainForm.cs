@@ -257,11 +257,12 @@ namespace ReserveEducation
         void loadComboBoxFaculty_Specialization()
         {
             Specialization_cmbFaculty_Filter.Items.Clear();
-            Specialization_cmbFaculty_Filter.Items.Add("Tất cả");
+            Specialization_cmbFaculty_Filter.Items.Add("Chọn tất cả");
             foreach (var item in facultiesTotal)
             {
                 Specialization_cmbFaculty_Filter.Items.Add(item);
             }
+            Specialization_cmbFaculty_Filter.SelectedIndex = 0;
         }
         private void Specialization_btnAdd_Click(object sender, EventArgs e)
         {
@@ -403,16 +404,17 @@ namespace ReserveEducation
             });
             studentClassesTotal = data.Data;
             loadComboBoxClass_Student();
-            
+
         }
         void loadComboBoxSpecialization_Class()
         {
             Classes_cmbSpecialization_Filter.Items.Clear();
-            Classes_cmbSpecialization_Filter.Items.Add("");
+            Classes_cmbSpecialization_Filter.Items.Add("Chọn tất cả");
             foreach (var item in specializationsTotal)
             {
                 Classes_cmbSpecialization_Filter.Items.Add(item);
             }
+            Classes_cmbSpecialization_Filter.SelectedIndex = 0;
         }
 
         private void Classes_btnAdd_Click(object sender, EventArgs e)
@@ -473,7 +475,7 @@ namespace ReserveEducation
         {
             keywordClass = Classes_txtKeyWord_Filter.Text.Trim();
             idSpecialization_FilterClasses = null;
-            specializationsPage = 1;
+            classesPage = 1;
             if (!string.IsNullOrEmpty(Classes_cmbSpecialization_Filter.Text.Trim()))
             {
                 var selectedSpecialization = specializationsTotal.FirstOrDefault(x => x.Name == Classes_cmbSpecialization_Filter.Text);
@@ -486,7 +488,7 @@ namespace ReserveEducation
             {
                 Keyword = keywordClass,
                 SpecializationID = idSpecialization_FilterClasses,
-                NumberPage = specializationsPage,
+                NumberPage = classesPage,
             });
             studentClasses = data.Data;
             StudentClassesMapDataToGridView();
@@ -591,7 +593,7 @@ namespace ReserveEducation
             if (e.ColumnIndex == senderGrid.Columns["Subject_btnUpdate"].Index && e.RowIndex >= 0)
             {
                 var selectedRow = dgvSubjects.Rows[e.RowIndex];
-                SubjectsUpdated_Frm updateSubject = new SubjectsUpdated_Frm(subjects[e.RowIndex]);                
+                SubjectsUpdated_Frm updateSubject = new SubjectsUpdated_Frm(subjects[e.RowIndex]);
                 updateSubject.ShowDialog();
                 loadDataSubject();
 
@@ -706,6 +708,7 @@ namespace ReserveEducation
             {
                 Student_cmbClass_Filter.Items.Add(item);
             }
+            Student_cmbClass_Filter.SelectedIndex = 0;
         }
         void loadStudentsTotal()
         {
@@ -840,10 +843,20 @@ namespace ReserveEducation
             });
             studentSubjectsTotal = data.Data;
         }
+
+
+
         #endregion
 
+        private void dgvSubjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Subject selectedSubject = subjects[e.RowIndex];
+                SubjectStudent f = new SubjectStudent(selectedSubject);
+                f.ShowDialog();
+            }
 
-
-
+        }
     }
 }

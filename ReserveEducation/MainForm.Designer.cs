@@ -382,7 +382,7 @@
             this.Students.Controls.Add(this.groupBox12);
             this.Students.Location = new System.Drawing.Point(4, 22);
             this.Students.Name = "Students";
-            this.Students.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Students.Padding = new System.Windows.Forms.Padding(3);
             this.Students.Size = new System.Drawing.Size(1241, 640);
             this.Students.TabIndex = 0;
             this.Students.Text = "Sinh Viên";
@@ -576,7 +576,7 @@
             this.Subjects.Controls.Add(this.groupBox10);
             this.Subjects.Location = new System.Drawing.Point(4, 22);
             this.Subjects.Name = "Subjects";
-            this.Subjects.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.Subjects.Padding = new System.Windows.Forms.Padding(3);
             this.Subjects.Size = new System.Drawing.Size(1241, 640);
             this.Subjects.TabIndex = 1;
             this.Subjects.Text = "Môn học";
@@ -634,6 +634,7 @@
             this.dgvSubjects.Size = new System.Drawing.Size(1229, 471);
             this.dgvSubjects.TabIndex = 10;
             this.dgvSubjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSubject_CellContentClick);
+            this.dgvSubjects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSubjects_CellDoubleClick);
             // 
             // SubjectID
             // 
@@ -770,7 +771,7 @@
             this.StudentClass.Controls.Add(this.groupBox9);
             this.StudentClass.Location = new System.Drawing.Point(4, 22);
             this.StudentClass.Name = "StudentClass";
-            this.StudentClass.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.StudentClass.Padding = new System.Windows.Forms.Padding(3);
             this.StudentClass.Size = new System.Drawing.Size(1241, 640);
             this.StudentClass.TabIndex = 2;
             this.StudentClass.Text = "Lớp";
@@ -1309,7 +1310,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.tabControl1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";

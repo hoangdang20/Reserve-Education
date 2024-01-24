@@ -19,6 +19,7 @@ namespace ReserveEducation.GUI.Students
         public StudentAdded_Frm()
         {
             InitializeComponent();
+            data = new Student();
 
             var studentClasses = ClassService.Query(new Dtos.ClassDto.SearchClassDto()
             {
