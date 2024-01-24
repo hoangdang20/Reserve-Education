@@ -16,29 +16,29 @@ namespace ReserveEducation.Services
         public static PagedList<Subject> Query(SearchSubjectDto request)
         {
             request.Keyword = request.Keyword == null ? null : request.Keyword.ToLower();
-            var data = db.Subjects.Where(x => (request.Keyword == null || x.Name.ToLower().Contains(request.Keyword) || x.Code.ToLower().Contains(request.Keyword) || x.ID.ToString().ToLower().Contains(request.Keyword)) && (request.SpecializationID == -1 || x.SpecializationID == request.SpecializationID)).ToList();
+            var data = db.Subjects.Where(x => (request.Keyword == null || x.Name.ToLower().Contains(request.Keyword) || x.Code.ToLower().Contains(request.Keyword) || x.ID.ToString().ToLower().Contains(request.Keyword)) && (request.SpecializationID == null || x.SpecializationID == request.SpecializationID)).ToList();
             return new PagedList<Subject>(data, request.NumberPage, request.PageSize, data.Count());
         }
-        public static bool Create(string newSubjectName, string newSubjectCode, string newSpecializationName)
+        public static bool Create(Subject data)
         {
             try
             {
-                if (db.Subjects.Any(x => x.Code == newSubjectCode))
+                if (db.Subjects.Any(x => x.Code == data.Code))
                 {
                     MessageBox.Show("Mã môn học đã tồn tại", "Thông báo");
                     return false;
                 }
 
-                if (db.Subjects.Any(x => x.Name == newSubjectName))
+                if (db.Subjects.Any(x => x.Name == data.Name))
                 {
                     MessageBox.Show("Tên môn học đã tồn tại", "Thông báo");
                     return false;
                 }
                 Subject subject = new Subject
                 {
-                    Name = newSubjectName,
-                    Code = newSubjectCode,
-                    SpecializationID = db.Specializations.FirstOrDefault(x => x.Name == newSpecializationName).ID,
+                    Name = data.Name,
+                    Code = data.Code,
+                    SpecializationID = data.SpecializationID,
                 };
                 db.Subjects.Add(subject);
                 db.SaveChanges();
@@ -50,24 +50,19 @@ namespace ReserveEducation.Services
                 return false;
             }
         }
-        public static bool Update(int subjectID, string newSubjectCode, string newSubjectName, string newSpecializationName)
+        public static bool Update(Subject data)
         {
             try
             {
-                var subjectToUpdate = db.Subjects.FirstOrDefault(s => s.ID == subjectID);
-                if (db.Subjects.Any(x => x.Name == newSubjectName && x.ID != subjectID))
+                var subjectToUpdate = db.Subjects.FirstOrDefault(s => s.ID == data.ID);
+                if (db.Subjects.Any(x => x.Name == data.Name&&x.SpecializationID == data.SpecializationID))
                 {
                     MessageBox.Show("Tên môn học đã tồn tại", "Thông báo");
                     return false;
-                } 
-                if (db.Subjects.Any(x => x.Code == newSubjectCode && x.ID != subjectID))
-                {
-                    MessageBox.Show("Mã môn học đã tồn tại", "Thông báo");
-                    return false;
                 }
-                subjectToUpdate.Name = newSubjectName;
-                subjectToUpdate.Code = newSubjectCode;
-                subjectToUpdate.SpecializationID = db.Specializations.FirstOrDefault(f => f.Name == newSpecializationName).ID;
+                subjectToUpdate.Name = data.Name;
+                subjectToUpdate.Code = data.Code;
+                subjectToUpdate.SpecializationID = data.SpecializationID;
                 db.SaveChanges();
                 return true;
             }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,31 +15,33 @@ namespace ReserveEducation.GUI.Subjects
 {
     public partial class SubjectsUpdated_Frm : Form
     {
-        int id = -1;
-        List<Infrastructure.Specialization> specializations;
-        public SubjectsUpdated_Frm(int subjectID, string subjectCode, string subjectName, string specializationName, List<Infrastructure.Specialization> specializations)
+        private Subject data;
+
+        public SubjectsUpdated_Frm(Subject _data = null)
         {
             InitializeComponent();
-            id = subjectID;
-            txtSubjectName.Text = subjectName;
-            txtSubjectCode.Text = subjectCode;
-            cmbSpecialization_Subject.SelectedText = specializationName;
-            this.specializations = specializations;
-            loadData(specializationName);
+            if (_data != null )
+            {
+                data = _data;
+            }
+            else
+            {
+                data = new Subject();
+            }
+            txtSubjectCode.Text = data.Code;
+            txtSubjectName.Text = data.Name;
 
-        }
-
-        void loadData(string specializationName)
-        {
-            foreach (var item in specializations)
+            var pagedSpecialize = SpecializationService.Query(new Dtos.SpecializationDto.SearchSpecializationDto()
+            {
+                PageSize = 10000000,
+            });
+            foreach (var item in pagedSpecialize.Data)
             {
                 cmbSpecialization_Subject.Items.Add(item);
-                if(item.Name == specializationName)
-                {
-                    cmbSpecialization_Subject.SelectedItem = item;
-                }
             }
+            cmbSpecialization_Subject.SelectedIndex = pagedSpecialize.Data.FindIndex(x => x.ID == data.SpecializationID);
         }
+        
 
         private void Subject_btnSua_Click(object sender, EventArgs e)
         {
@@ -60,12 +63,26 @@ namespace ReserveEducation.GUI.Subjects
                 return;
             }
 
-            bool result = SubjectService.Update(id, txtSubjectCode.Text, txtSubjectName.Text, cmbSpecialization_Subject.Text);
+            bool result = data.ID > 0 ? SubjectService.Update(data) : SubjectService.Create(data);
             if (result == true)
             {
                 this.Close();
             }
         }
 
+        private void txtSubjectCode_TextChanged(object sender, EventArgs e)
+        {
+            data.Code = txtSubjectCode.Text;
+        }
+
+        private void txtSubjectName_TextChanged(object sender, EventArgs e)
+        {
+            data.Name = txtSubjectName.Text;
+        }
+
+        private void cmbSpecialization_Subject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            data.SpecializationID = (cmbSpecialization_Subject.SelectedItem as Specialization).ID;
+        }
     }
 }
