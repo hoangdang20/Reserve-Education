@@ -16,7 +16,7 @@ namespace ReserveEducation.Services
         public static PagedList<StudentClass> Query(SearchClassDto request)
         {
             request.Keyword = request.Keyword == null ? null : request.Keyword.ToLower();
-            var data = db.StudentClasses.Where(x => (request.Keyword == null || x.Name.ToLower().Contains(request.Keyword) || x.ID.ToString().Contains(request.Keyword)) && (request.SpecializationID == null || x.SpecializationID == request.SpecializationID)).ToList();
+            var data = db.StudentClasses.Where(x => (request.Keyword == null || x.Name.ToLower().Contains(request.Keyword)) && (request.SpecializationID == null || x.SpecializationID == request.SpecializationID)).ToList();
             return new PagedList<StudentClass>(data, request.NumberPage, request.PageSize, data.Count());
         }
 

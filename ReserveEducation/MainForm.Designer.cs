@@ -34,12 +34,6 @@
             this.Student_btnContinue = new System.Windows.Forms.Button();
             this.Student_btnBack = new System.Windows.Forms.Button();
             this.dgvStudents = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Student_btnUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Student_btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Student_cmbClass_Filter = new System.Windows.Forms.ComboBox();
@@ -53,12 +47,6 @@
             this.Subject_btnContinue = new System.Windows.Forms.Button();
             this.Subject_btnBack = new System.Windows.Forms.Button();
             this.dgvSubjects = new System.Windows.Forms.DataGridView();
-            this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subject_btnUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Subject_btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.Subjects_cmbSpecialization_Filter = new System.Windows.Forms.ComboBox();
@@ -72,12 +60,6 @@
             this.Classes_btnContinue = new System.Windows.Forms.Button();
             this.Classes_btnBack = new System.Windows.Forms.Button();
             this.dgvClasses = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumberOfStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Class_btnUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Class_btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.Classes_cmbSpecialization_Filter = new System.Windows.Forms.ComboBox();
@@ -92,11 +74,6 @@
             this.Specialization_btnContinue = new System.Windows.Forms.Button();
             this.Specialization_btnBack = new System.Windows.Forms.Button();
             this.dgvSpecializations = new System.Windows.Forms.DataGridView();
-            this.SpecializationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SpecializationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FacultyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Specialization_btnUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Specialization_btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Specialization_cmbFaculty_Filter = new System.Windows.Forms.ComboBox();
@@ -110,16 +87,39 @@
             this.Faculty_btnContinue = new System.Windows.Forms.Button();
             this.Faculty_btnBack = new System.Windows.Forms.Button();
             this.dgvFaculties = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Faculty_btnUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Faculty_btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.Faculties_btnFilter = new System.Windows.Forms.Button();
             this.Faculties_txtKeyWord_Filter = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Faculties_btnAdd = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Student_btnUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Student_btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SubjectID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subject_btnUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Subject_btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumberOfStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Class_btnUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Class_btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Faculty_btnUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Faculty_btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.SpecializationID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SpecializationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FacultyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Specialization_btnUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Specialization_btnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.Students.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
@@ -225,52 +225,6 @@
             this.dgvStudents.Size = new System.Drawing.Size(1229, 471);
             this.dgvStudents.TabIndex = 13;
             this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Tên sinh viên";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Mã sinh viên";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "Tên lớp";
-            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            // 
-            // Student_btnUpdate
-            // 
-            this.Student_btnUpdate.HeaderText = "#";
-            this.Student_btnUpdate.MinimumWidth = 6;
-            this.Student_btnUpdate.Name = "Student_btnUpdate";
-            this.Student_btnUpdate.ReadOnly = true;
-            this.Student_btnUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Student_btnUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Student_btnDelete
-            // 
-            this.Student_btnDelete.HeaderText = "##";
-            this.Student_btnDelete.MinimumWidth = 6;
-            this.Student_btnDelete.Name = "Student_btnDelete";
-            this.Student_btnDelete.ReadOnly = true;
-            this.Student_btnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Student_btnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // groupBox11
             // 
@@ -421,52 +375,6 @@
             this.dgvSubjects.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSubject_CellContentClick);
             this.dgvSubjects.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSubjects_CellDoubleClick);
             // 
-            // SubjectID
-            // 
-            this.SubjectID.HeaderText = "Mã môn";
-            this.SubjectID.MinimumWidth = 6;
-            this.SubjectID.Name = "SubjectID";
-            this.SubjectID.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Mã học phần";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Tên học phần";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Tên ngành";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // Subject_btnUpdate
-            // 
-            this.Subject_btnUpdate.HeaderText = "#";
-            this.Subject_btnUpdate.MinimumWidth = 6;
-            this.Subject_btnUpdate.Name = "Subject_btnUpdate";
-            this.Subject_btnUpdate.ReadOnly = true;
-            this.Subject_btnUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Subject_btnUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Subject_btnDelete
-            // 
-            this.Subject_btnDelete.HeaderText = "##";
-            this.Subject_btnDelete.MinimumWidth = 6;
-            this.Subject_btnDelete.Name = "Subject_btnDelete";
-            this.Subject_btnDelete.ReadOnly = true;
-            this.Subject_btnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Subject_btnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.label12);
@@ -614,50 +522,6 @@
             this.dgvClasses.Size = new System.Drawing.Size(1229, 471);
             this.dgvClasses.TabIndex = 4;
             this.dgvClasses.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Classes_dgvClass_CellContentClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Mã lớp";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Tên lớp";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Tên ngành";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // NumberOfStudent
-            // 
-            this.NumberOfStudent.HeaderText = "Số lượng sinh viên";
-            this.NumberOfStudent.MinimumWidth = 6;
-            this.NumberOfStudent.Name = "NumberOfStudent";
-            this.NumberOfStudent.ReadOnly = true;
-            // 
-            // Class_btnUpdate
-            // 
-            this.Class_btnUpdate.HeaderText = "#";
-            this.Class_btnUpdate.MinimumWidth = 6;
-            this.Class_btnUpdate.Name = "Class_btnUpdate";
-            this.Class_btnUpdate.ReadOnly = true;
-            this.Class_btnUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Class_btnUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Class_btnDelete
-            // 
-            this.Class_btnDelete.HeaderText = "##";
-            this.Class_btnDelete.MinimumWidth = 6;
-            this.Class_btnDelete.Name = "Class_btnDelete";
-            this.Class_btnDelete.ReadOnly = true;
             // 
             // groupBox8
             // 
@@ -816,45 +680,6 @@
             this.dgvSpecializations.TabIndex = 1;
             this.dgvSpecializations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Specialization_dgvSpecialization_CellContentClick);
             // 
-            // SpecializationID
-            // 
-            this.SpecializationID.HeaderText = "Mã ngành";
-            this.SpecializationID.MinimumWidth = 6;
-            this.SpecializationID.Name = "SpecializationID";
-            this.SpecializationID.ReadOnly = true;
-            // 
-            // SpecializationName
-            // 
-            this.SpecializationName.HeaderText = "Tên ngành";
-            this.SpecializationName.MinimumWidth = 6;
-            this.SpecializationName.Name = "SpecializationName";
-            this.SpecializationName.ReadOnly = true;
-            // 
-            // FacultyName
-            // 
-            this.FacultyName.HeaderText = "Tên khoa";
-            this.FacultyName.MinimumWidth = 6;
-            this.FacultyName.Name = "FacultyName";
-            this.FacultyName.ReadOnly = true;
-            // 
-            // Specialization_btnUpdate
-            // 
-            this.Specialization_btnUpdate.HeaderText = "#";
-            this.Specialization_btnUpdate.MinimumWidth = 6;
-            this.Specialization_btnUpdate.Name = "Specialization_btnUpdate";
-            this.Specialization_btnUpdate.ReadOnly = true;
-            this.Specialization_btnUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Specialization_btnUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Specialization_btnDelete
-            // 
-            this.Specialization_btnDelete.HeaderText = "##";
-            this.Specialization_btnDelete.MinimumWidth = 6;
-            this.Specialization_btnDelete.Name = "Specialization_btnDelete";
-            this.Specialization_btnDelete.ReadOnly = true;
-            this.Specialization_btnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Specialization_btnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label5);
@@ -1001,36 +826,6 @@
             this.dgvFaculties.TabIndex = 1;
             this.dgvFaculties.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Faculty_CellContentClick_btUpdate);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Mã khoa";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Tên khoa";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Faculty_btnUpdate
-            // 
-            this.Faculty_btnUpdate.HeaderText = "#";
-            this.Faculty_btnUpdate.MinimumWidth = 6;
-            this.Faculty_btnUpdate.Name = "Faculty_btnUpdate";
-            this.Faculty_btnUpdate.ReadOnly = true;
-            // 
-            // Faculty_btnDelete
-            // 
-            this.Faculty_btnDelete.HeaderText = "##";
-            this.Faculty_btnDelete.MinimumWidth = 6;
-            this.Faculty_btnDelete.Name = "Faculty_btnDelete";
-            this.Faculty_btnDelete.ReadOnly = true;
-            this.Faculty_btnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Faculty_btnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.Faculties_btnFilter);
@@ -1088,6 +883,216 @@
             this.Faculties_btnAdd.Text = "Thêm";
             this.Faculties_btnAdd.UseVisualStyleBackColor = true;
             this.Faculties_btnAdd.Click += new System.EventHandler(this.Faculties_btnAdd_Click);
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Tên sinh viên";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Mã sinh viên";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "Tên lớp";
+            this.dataGridViewTextBoxColumn9.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // Student_btnUpdate
+            // 
+            this.Student_btnUpdate.HeaderText = "#";
+            this.Student_btnUpdate.MinimumWidth = 6;
+            this.Student_btnUpdate.Name = "Student_btnUpdate";
+            this.Student_btnUpdate.ReadOnly = true;
+            this.Student_btnUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Student_btnUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Student_btnDelete
+            // 
+            this.Student_btnDelete.HeaderText = "##";
+            this.Student_btnDelete.MinimumWidth = 6;
+            this.Student_btnDelete.Name = "Student_btnDelete";
+            this.Student_btnDelete.ReadOnly = true;
+            this.Student_btnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Student_btnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // SubjectID
+            // 
+            this.SubjectID.HeaderText = "Mã môn";
+            this.SubjectID.MinimumWidth = 6;
+            this.SubjectID.Name = "SubjectID";
+            this.SubjectID.ReadOnly = true;
+            this.SubjectID.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Mã học phần";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Tên học phần";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Tên ngành";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // Subject_btnUpdate
+            // 
+            this.Subject_btnUpdate.HeaderText = "#";
+            this.Subject_btnUpdate.MinimumWidth = 6;
+            this.Subject_btnUpdate.Name = "Subject_btnUpdate";
+            this.Subject_btnUpdate.ReadOnly = true;
+            this.Subject_btnUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Subject_btnUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Subject_btnDelete
+            // 
+            this.Subject_btnDelete.HeaderText = "##";
+            this.Subject_btnDelete.MinimumWidth = 6;
+            this.Subject_btnDelete.Name = "Subject_btnDelete";
+            this.Subject_btnDelete.ReadOnly = true;
+            this.Subject_btnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Subject_btnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Mã lớp";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Tên lớp";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Tên ngành";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // NumberOfStudent
+            // 
+            this.NumberOfStudent.HeaderText = "Số lượng sinh viên";
+            this.NumberOfStudent.MinimumWidth = 6;
+            this.NumberOfStudent.Name = "NumberOfStudent";
+            this.NumberOfStudent.ReadOnly = true;
+            // 
+            // Class_btnUpdate
+            // 
+            this.Class_btnUpdate.HeaderText = "#";
+            this.Class_btnUpdate.MinimumWidth = 6;
+            this.Class_btnUpdate.Name = "Class_btnUpdate";
+            this.Class_btnUpdate.ReadOnly = true;
+            this.Class_btnUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Class_btnUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Class_btnDelete
+            // 
+            this.Class_btnDelete.HeaderText = "##";
+            this.Class_btnDelete.MinimumWidth = 6;
+            this.Class_btnDelete.Name = "Class_btnDelete";
+            this.Class_btnDelete.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Mã khoa";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Tên khoa";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Faculty_btnUpdate
+            // 
+            this.Faculty_btnUpdate.HeaderText = "#";
+            this.Faculty_btnUpdate.MinimumWidth = 6;
+            this.Faculty_btnUpdate.Name = "Faculty_btnUpdate";
+            this.Faculty_btnUpdate.ReadOnly = true;
+            // 
+            // Faculty_btnDelete
+            // 
+            this.Faculty_btnDelete.HeaderText = "##";
+            this.Faculty_btnDelete.MinimumWidth = 6;
+            this.Faculty_btnDelete.Name = "Faculty_btnDelete";
+            this.Faculty_btnDelete.ReadOnly = true;
+            this.Faculty_btnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Faculty_btnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // SpecializationID
+            // 
+            this.SpecializationID.HeaderText = "Mã ngành";
+            this.SpecializationID.MinimumWidth = 6;
+            this.SpecializationID.Name = "SpecializationID";
+            this.SpecializationID.ReadOnly = true;
+            this.SpecializationID.Visible = false;
+            // 
+            // SpecializationName
+            // 
+            this.SpecializationName.HeaderText = "Tên ngành";
+            this.SpecializationName.MinimumWidth = 6;
+            this.SpecializationName.Name = "SpecializationName";
+            this.SpecializationName.ReadOnly = true;
+            // 
+            // FacultyName
+            // 
+            this.FacultyName.HeaderText = "Tên khoa";
+            this.FacultyName.MinimumWidth = 6;
+            this.FacultyName.Name = "FacultyName";
+            this.FacultyName.ReadOnly = true;
+            // 
+            // Specialization_btnUpdate
+            // 
+            this.Specialization_btnUpdate.HeaderText = "#";
+            this.Specialization_btnUpdate.MinimumWidth = 6;
+            this.Specialization_btnUpdate.Name = "Specialization_btnUpdate";
+            this.Specialization_btnUpdate.ReadOnly = true;
+            this.Specialization_btnUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Specialization_btnUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Specialization_btnDelete
+            // 
+            this.Specialization_btnDelete.HeaderText = "##";
+            this.Specialization_btnDelete.MinimumWidth = 6;
+            this.Specialization_btnDelete.Name = "Specialization_btnDelete";
+            this.Specialization_btnDelete.ReadOnly = true;
+            this.Specialization_btnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Specialization_btnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // MainForm
             // 
@@ -1192,27 +1197,6 @@
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Button Subjects_btnAdd;
         private System.Windows.Forms.Button Faculties_btnAdd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewButtonColumn Faculty_btnUpdate;
-        private System.Windows.Forms.DataGridViewButtonColumn Faculty_btnDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SpecializationID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SpecializationName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FacultyName;
-        private System.Windows.Forms.DataGridViewButtonColumn Specialization_btnUpdate;
-        private System.Windows.Forms.DataGridViewButtonColumn Specialization_btnDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumberOfStudent;
-        private System.Windows.Forms.DataGridViewButtonColumn Class_btnUpdate;
-        private System.Windows.Forms.DataGridViewButtonColumn Class_btnDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewButtonColumn Subject_btnUpdate;
-        private System.Windows.Forms.DataGridViewButtonColumn Subject_btnDelete;
         private System.Windows.Forms.DataGridView dgvStudents;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Label label2;
@@ -1231,6 +1215,27 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewButtonColumn Student_btnUpdate;
         private System.Windows.Forms.DataGridViewButtonColumn Student_btnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubjectID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewButtonColumn Subject_btnUpdate;
+        private System.Windows.Forms.DataGridViewButtonColumn Subject_btnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumberOfStudent;
+        private System.Windows.Forms.DataGridViewButtonColumn Class_btnUpdate;
+        private System.Windows.Forms.DataGridViewButtonColumn Class_btnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SpecializationID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SpecializationName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FacultyName;
+        private System.Windows.Forms.DataGridViewButtonColumn Specialization_btnUpdate;
+        private System.Windows.Forms.DataGridViewButtonColumn Specialization_btnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewButtonColumn Faculty_btnUpdate;
+        private System.Windows.Forms.DataGridViewButtonColumn Faculty_btnDelete;
     }
 }
 
