@@ -166,8 +166,10 @@
             // 
             // StudentSubject_cmbSelectFilter
             // 
+            this.StudentSubject_cmbSelectFilter.DropDownHeight = 80;
             this.StudentSubject_cmbSelectFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.StudentSubject_cmbSelectFilter.FormattingEnabled = true;
+            this.StudentSubject_cmbSelectFilter.IntegralHeight = false;
             this.StudentSubject_cmbSelectFilter.Location = new System.Drawing.Point(6, 113);
             this.StudentSubject_cmbSelectFilter.Name = "StudentSubject_cmbSelectFilter";
             this.StudentSubject_cmbSelectFilter.Size = new System.Drawing.Size(174, 21);
@@ -241,7 +243,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Student_Updated";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Student Subject";
+            this.Text = "Thông tin sinh viên";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

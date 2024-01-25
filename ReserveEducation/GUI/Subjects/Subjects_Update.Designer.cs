@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Subject_btnSua = new System.Windows.Forms.Button();
+            this.Subject_btnUpdate = new System.Windows.Forms.Button();
             this.cmbSpecialization_Subject = new System.Windows.Forms.ComboBox();
             this.txtSubjectName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,20 +37,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // Subject_btnSua
+            // Subject_btnUpdate
             // 
-            this.Subject_btnSua.Location = new System.Drawing.Point(122, 124);
-            this.Subject_btnSua.Name = "Subject_btnSua";
-            this.Subject_btnSua.Size = new System.Drawing.Size(124, 23);
-            this.Subject_btnSua.TabIndex = 3;
-            this.Subject_btnSua.Text = "Sửa";
-            this.Subject_btnSua.UseVisualStyleBackColor = true;
-            this.Subject_btnSua.Click += new System.EventHandler(this.Subject_btnSua_Click);
+            this.Subject_btnUpdate.Location = new System.Drawing.Point(122, 124);
+            this.Subject_btnUpdate.Name = "Subject_btnUpdate";
+            this.Subject_btnUpdate.Size = new System.Drawing.Size(124, 23);
+            this.Subject_btnUpdate.TabIndex = 3;
+            this.Subject_btnUpdate.Text = "Thêm";
+            this.Subject_btnUpdate.UseVisualStyleBackColor = true;
+            this.Subject_btnUpdate.Click += new System.EventHandler(this.Subject_btnUpdate_Click);
             // 
             // cmbSpecialization_Subject
             // 
+            this.cmbSpecialization_Subject.DropDownHeight = 80;
             this.cmbSpecialization_Subject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSpecialization_Subject.FormattingEnabled = true;
+            this.cmbSpecialization_Subject.IntegralHeight = false;
             this.cmbSpecialization_Subject.Location = new System.Drawing.Point(15, 97);
             this.cmbSpecialization_Subject.Name = "cmbSpecialization_Subject";
             this.cmbSpecialization_Subject.Size = new System.Drawing.Size(357, 21);
@@ -107,7 +109,7 @@
             this.ClientSize = new System.Drawing.Size(384, 159);
             this.Controls.Add(this.txtSubjectCode);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Subject_btnSua);
+            this.Controls.Add(this.Subject_btnUpdate);
             this.Controls.Add(this.cmbSpecialization_Subject);
             this.Controls.Add(this.txtSubjectName);
             this.Controls.Add(this.label2);
@@ -115,7 +117,7 @@
             this.Name = "SubjectsUpdated_Frm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Sửa khoa";
+            this.Text = "Thông tin học phần";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,7 +125,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Subject_btnSua;
+        private System.Windows.Forms.Button Subject_btnUpdate;
         private System.Windows.Forms.ComboBox cmbSpecialization_Subject;
         private System.Windows.Forms.TextBox txtSubjectName;
         private System.Windows.Forms.Label label2;

@@ -70,26 +70,23 @@ namespace ReserveEducation
             switch (selectedIndex)
             {
                 case 0:
-                    loadDataFaculty();
-                    loadDataSpecialization();
-                    break;
-                case 1:
                     loadDataStudentClass();
                     loadDataStudent();
                     break;
-                case 2:
+                case 1:
                     loadDataSpecialization();
                     loadDataSubject();
                     break;
-                case 3:
+                case 2:
                     loadDataSpecialization();
                     loadDataStudentClass();
                     break;
-                case 4:
+                case 3:
                     loadDataFaculty();
                     loadDataSpecialization();
                     break;
                 default:
+                    loadData();
                     break;
             }
         }
@@ -619,6 +616,16 @@ namespace ReserveEducation
                 }
             }
         }
+        private void dgvSubjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Subject selectedSubject = subjects[e.RowIndex];
+                SubjectStudent f = new SubjectStudent(selectedSubject);
+                f.ShowDialog();
+            }
+
+        }
         private void Subjects_btnFilter_Click(object sender, EventArgs e)
         {
             keywordSubject = Subjects_txtKeyWord_Filter.Text.Trim();
@@ -848,15 +855,6 @@ namespace ReserveEducation
 
         #endregion
 
-        private void dgvSubjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                Subject selectedSubject = subjects[e.RowIndex];
-                SubjectStudent f = new SubjectStudent(selectedSubject);
-                f.ShowDialog();
-            }
-
-        }
+        
     }
 }

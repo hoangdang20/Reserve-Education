@@ -29,25 +29,6 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.MappingStudentSubject = new System.Windows.Forms.TabPage();
-            this.dgvStudentSubject = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.StudentSubject_cmbClass_Filter = new System.Windows.Forms.ComboBox();
-            this.StudentSubject_btnFilter = new System.Windows.Forms.Button();
-            this.StudentSubject_txtKeyWord_Filter = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.StudentSubject_btnAdd = new System.Windows.Forms.Button();
             this.Students = new System.Windows.Forms.TabPage();
             this.lblnumberPageStudent = new System.Windows.Forms.Label();
             this.Student_btnContinue = new System.Windows.Forms.Button();
@@ -140,10 +121,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Faculties_btnAdd = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
-            this.MappingStudentSubject.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudentSubject)).BeginInit();
-            this.groupBox13.SuspendLayout();
-            this.groupBox14.SuspendLayout();
             this.Students.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
             this.groupBox11.SuspendLayout();
@@ -169,7 +146,6 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.MappingStudentSubject);
             this.tabControl1.Controls.Add(this.Students);
             this.tabControl1.Controls.Add(this.Subjects);
             this.tabControl1.Controls.Add(this.StudentClass);
@@ -180,197 +156,6 @@
             this.tabControl1.Size = new System.Drawing.Size(1249, 666);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            // 
-            // MappingStudentSubject
-            // 
-            this.MappingStudentSubject.Controls.Add(this.dgvStudentSubject);
-            this.MappingStudentSubject.Controls.Add(this.groupBox13);
-            this.MappingStudentSubject.Controls.Add(this.groupBox14);
-            this.MappingStudentSubject.Location = new System.Drawing.Point(4, 22);
-            this.MappingStudentSubject.Name = "MappingStudentSubject";
-            this.MappingStudentSubject.Size = new System.Drawing.Size(1241, 640);
-            this.MappingStudentSubject.TabIndex = 4;
-            this.MappingStudentSubject.Text = "Sinh viên bảo lưu";
-            this.MappingStudentSubject.UseVisualStyleBackColor = true;
-            // 
-            // dgvStudentSubject
-            // 
-            this.dgvStudentSubject.AllowUserToAddRows = false;
-            this.dgvStudentSubject.AllowUserToDeleteRows = false;
-            this.dgvStudentSubject.AllowUserToResizeRows = false;
-            this.dgvStudentSubject.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvStudentSubject.ColumnHeadersHeight = 29;
-            this.dgvStudentSubject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvStudentSubject.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.dataGridViewButtonColumn1,
-            this.dataGridViewButtonColumn2});
-            this.dgvStudentSubject.Location = new System.Drawing.Point(6, 131);
-            this.dgvStudentSubject.Name = "dgvStudentSubject";
-            this.dgvStudentSubject.ReadOnly = true;
-            this.dgvStudentSubject.RowHeadersVisible = false;
-            this.dgvStudentSubject.RowHeadersWidth = 51;
-            this.dgvStudentSubject.Size = new System.Drawing.Size(1229, 471);
-            this.dgvStudentSubject.TabIndex = 16;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "ID Sinh viên";
-            this.dataGridViewTextBoxColumn10.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.FillWeight = 150F;
-            this.dataGridViewTextBoxColumn11.HeaderText = "Mã sinh viên";
-            this.dataGridViewTextBoxColumn11.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.FillWeight = 222F;
-            this.dataGridViewTextBoxColumn12.HeaderText = "Tên sinh viên";
-            this.dataGridViewTextBoxColumn12.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.HeaderText = "ID Môn";
-            this.dataGridViewTextBoxColumn13.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.Visible = false;
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 117F;
-            this.Column4.HeaderText = "Mã môn học";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.FillWeight = 236F;
-            this.Column5.HeaderText = "Tên môn học";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.FillWeight = 166F;
-            this.Column6.HeaderText = "Bảo lưu";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            this.dataGridViewButtonColumn1.FillWeight = 178F;
-            this.dataGridViewButtonColumn1.HeaderText = "#";
-            this.dataGridViewButtonColumn1.MinimumWidth = 6;
-            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            this.dataGridViewButtonColumn1.ReadOnly = true;
-            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewButtonColumn2
-            // 
-            this.dataGridViewButtonColumn2.FillWeight = 157F;
-            this.dataGridViewButtonColumn2.HeaderText = "##";
-            this.dataGridViewButtonColumn2.MinimumWidth = 6;
-            this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
-            this.dataGridViewButtonColumn2.ReadOnly = true;
-            this.dataGridViewButtonColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewButtonColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // groupBox13
-            // 
-            this.groupBox13.Controls.Add(this.label8);
-            this.groupBox13.Controls.Add(this.StudentSubject_cmbClass_Filter);
-            this.groupBox13.Controls.Add(this.StudentSubject_btnFilter);
-            this.groupBox13.Controls.Add(this.StudentSubject_txtKeyWord_Filter);
-            this.groupBox13.Controls.Add(this.label9);
-            this.groupBox13.Location = new System.Drawing.Point(6, 60);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(1229, 65);
-            this.groupBox13.TabIndex = 17;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Bộ lọc";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(737, 15);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(25, 13);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Lớp";
-            // 
-            // StudentSubject_cmbClass_Filter
-            // 
-            this.StudentSubject_cmbClass_Filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.StudentSubject_cmbClass_Filter.FormattingEnabled = true;
-            this.StudentSubject_cmbClass_Filter.IntegralHeight = false;
-            this.StudentSubject_cmbClass_Filter.Location = new System.Drawing.Point(740, 31);
-            this.StudentSubject_cmbClass_Filter.Name = "StudentSubject_cmbClass_Filter";
-            this.StudentSubject_cmbClass_Filter.Size = new System.Drawing.Size(193, 21);
-            this.StudentSubject_cmbClass_Filter.TabIndex = 4;
-            // 
-            // StudentSubject_btnFilter
-            // 
-            this.StudentSubject_btnFilter.Location = new System.Drawing.Point(939, 30);
-            this.StudentSubject_btnFilter.Name = "StudentSubject_btnFilter";
-            this.StudentSubject_btnFilter.Size = new System.Drawing.Size(284, 24);
-            this.StudentSubject_btnFilter.TabIndex = 2;
-            this.StudentSubject_btnFilter.Text = "Lọc";
-            this.StudentSubject_btnFilter.UseVisualStyleBackColor = true;
-            // 
-            // StudentSubject_txtKeyWord_Filter
-            // 
-            this.StudentSubject_txtKeyWord_Filter.Location = new System.Drawing.Point(6, 31);
-            this.StudentSubject_txtKeyWord_Filter.Name = "StudentSubject_txtKeyWord_Filter";
-            this.StudentSubject_txtKeyWord_Filter.Size = new System.Drawing.Size(728, 20);
-            this.StudentSubject_txtKeyWord_Filter.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Từ khoá";
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.StudentSubject_btnAdd);
-            this.groupBox14.Location = new System.Drawing.Point(6, 6);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(1230, 49);
-            this.groupBox14.TabIndex = 15;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Chức năng";
-            // 
-            // StudentSubject_btnAdd
-            // 
-            this.StudentSubject_btnAdd.Location = new System.Drawing.Point(6, 19);
-            this.StudentSubject_btnAdd.Name = "StudentSubject_btnAdd";
-            this.StudentSubject_btnAdd.Size = new System.Drawing.Size(221, 22);
-            this.StudentSubject_btnAdd.TabIndex = 0;
-            this.StudentSubject_btnAdd.Text = "Thêm";
-            this.StudentSubject_btnAdd.UseVisualStyleBackColor = true;
             // 
             // Students
             // 
@@ -1317,11 +1102,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reserve Education";
             this.tabControl1.ResumeLayout(false);
-            this.MappingStudentSubject.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudentSubject)).EndInit();
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
             this.Students.ResumeLayout(false);
             this.Students.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
@@ -1451,25 +1231,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewButtonColumn Student_btnUpdate;
         private System.Windows.Forms.DataGridViewButtonColumn Student_btnDelete;
-        private System.Windows.Forms.TabPage MappingStudentSubject;
-        private System.Windows.Forms.DataGridView dgvStudentSubject;
-        private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox StudentSubject_cmbClass_Filter;
-        private System.Windows.Forms.Button StudentSubject_btnFilter;
-        private System.Windows.Forms.TextBox StudentSubject_txtKeyWord_Filter;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.Button StudentSubject_btnAdd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
     }
 }
 

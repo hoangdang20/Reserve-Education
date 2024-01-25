@@ -77,8 +77,10 @@ namespace ReserveEducation.GUI.Subjects
         private void StudentSubject_btnFilter_Click(object sender, EventArgs e)
         {
             var students = StudentSubjectService.GetStudents(subject, specialization, studentClass);
+            string keyword = StudentSubject_txtKeywordFilter.Text.ToLower();
+            var result = students.Where(x => (keyword == null || x.Name.ToLower().Contains(keyword) || x.Code.ToLower().Contains(keyword)));
             lsvStudentIsNotPassed.Items.Clear();
-            foreach (var item in students)
+            foreach (var item in result)
             {
                 ListViewItem listViewItem = new ListViewItem(item.Code);
                 listViewItem.SubItems.Add(item.Name);
@@ -123,12 +125,14 @@ namespace ReserveEducation.GUI.Subjects
 
         private void StudentSubject_cmbClassesFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(classes!= null)
+            if (classes != null)
             {
                 var selectedClasses = classes.FirstOrDefault(f => f.Name == StudentSubject_cmbClassesFilter.Text);
                 studentClass = selectedClasses;
             }
-            
+
         }
+
+
     }
 }

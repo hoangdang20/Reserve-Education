@@ -23,10 +23,13 @@ namespace ReserveEducation.GUI.Subjects
             if (_data != null )
             {
                 data = _data;
+                Subject_btnUpdate.Text = "Sửa";
+
             }
             else
             {
                 data = new Subject();
+                Subject_btnUpdate.Text = "Thêm";
             }
             txtSubjectCode.Text = data.Code;
             txtSubjectName.Text = data.Name;
@@ -43,7 +46,7 @@ namespace ReserveEducation.GUI.Subjects
         }
         
 
-        private void Subject_btnSua_Click(object sender, EventArgs e)
+        private void Subject_btnUpdate_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtSubjectName.Text))
             {

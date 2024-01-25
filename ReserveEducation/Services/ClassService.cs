@@ -39,18 +39,18 @@ namespace ReserveEducation.Services
             }
         }
 
-        public static bool Update(StudentClass student)
+        public static bool Update(StudentClass studentClass)
         {
             try
             {
-                var studentClassToUpdate = db.StudentClasses.FirstOrDefault(c => c.ID == student.ID);
-                if (db.StudentClasses.Any(x => x.Name == student.Name && x.SpecializationID == student.SpecializationID))
+                var studentClassToUpdate = db.StudentClasses.FirstOrDefault(c => c.ID == studentClass.ID);
+                if (db.StudentClasses.Any(x => x.Name == studentClass.Name && x.ID != studentClass.ID))
                 {
                     MessageBox.Show("Tên lớp đã tồn tại");
                     return false;
                 }
-                studentClassToUpdate.Name = student.Name;
-                studentClassToUpdate.SpecializationID = student.SpecializationID;
+                studentClassToUpdate.Name = studentClass.Name;
+                studentClassToUpdate.SpecializationID = studentClass.SpecializationID;
                 db.SaveChanges();
                 return true;
             }

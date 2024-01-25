@@ -56,8 +56,10 @@
             // 
             // cmbClasses_Student
             // 
+            this.cmbClasses_Student.DropDownHeight = 80;
             this.cmbClasses_Student.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClasses_Student.FormattingEnabled = true;
+            this.cmbClasses_Student.IntegralHeight = false;
             this.cmbClasses_Student.Location = new System.Drawing.Point(15, 103);
             this.cmbClasses_Student.Name = "cmbClasses_Student";
             this.cmbClasses_Student.Size = new System.Drawing.Size(356, 21);
@@ -115,7 +117,7 @@
             this.Name = "StudentAdded_Frm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Thêm môn học";
+            this.Text = "Thêm sinh viên";
             this.ResumeLayout(false);
             this.PerformLayout();
 

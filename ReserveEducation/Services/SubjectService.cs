@@ -55,7 +55,7 @@ namespace ReserveEducation.Services
             try
             {
                 var subjectToUpdate = db.Subjects.FirstOrDefault(s => s.ID == data.ID);
-                if (db.Subjects.Any(x => x.Name == data.Name&&x.SpecializationID == data.SpecializationID))
+                if (db.Subjects.Any(x => x.Name == data.Name && x.ID != data.ID))
                 {
                     MessageBox.Show("Tên môn học đã tồn tại", "Thông báo");
                     return false;
