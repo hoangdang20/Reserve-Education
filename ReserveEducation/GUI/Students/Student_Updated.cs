@@ -199,8 +199,8 @@ namespace ReserveEducation.GUI.StudentSubject
         private void Student_cmbClasses_SelectedIndexChanged(object sender, EventArgs e)
         {
             data.StudentClassID = (Student_cmbClasses.SelectedItem as StudentClass).ID;
-
         }
+
 
     }
 }

@@ -43,7 +43,7 @@ namespace ReserveEducation.Services
             try
             {
                 var specializationToUpdate = db.Specializations.FirstOrDefault(s => s.ID == data.ID);
-                if (db.Specializations.Any(x => x.Name == data.Name && x.FacultyID == data.FacultyID))
+                if (db.Specializations.Any(x => x.Name == data.Name && x.ID != data.ID))
                 {
                     MessageBox.Show("Tên chuyên ngành đã tồn tại", "Thông báo");
                     return false;

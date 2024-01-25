@@ -58,7 +58,7 @@
             this.StudentSubject_btnFilter.Location = new System.Drawing.Point(6, 148);
             this.StudentSubject_btnFilter.Name = "StudentSubject_btnFilter";
             this.StudentSubject_btnFilter.Size = new System.Drawing.Size(174, 35);
-            this.StudentSubject_btnFilter.TabIndex = 12;
+            this.StudentSubject_btnFilter.TabIndex = 6;
             this.StudentSubject_btnFilter.Text = "Lọc";
             this.StudentSubject_btnFilter.UseVisualStyleBackColor = true;
             this.StudentSubject_btnFilter.Click += new System.EventHandler(this.StudentSubject_btnFilter_Click);
@@ -115,7 +115,7 @@
             this.StudentSubject_cmbSpecializationFilter.Location = new System.Drawing.Point(6, 73);
             this.StudentSubject_cmbSpecializationFilter.Name = "StudentSubject_cmbSpecializationFilter";
             this.StudentSubject_cmbSpecializationFilter.Size = new System.Drawing.Size(174, 21);
-            this.StudentSubject_cmbSpecializationFilter.TabIndex = 13;
+            this.StudentSubject_cmbSpecializationFilter.TabIndex = 4;
             this.StudentSubject_cmbSpecializationFilter.SelectedIndexChanged += new System.EventHandler(this.StudentSubject_cmbSpecializationFilter_SelectedIndexChanged);
             // 
             // StudentSubject_txtKeywordFilter
@@ -123,7 +123,7 @@
             this.StudentSubject_txtKeywordFilter.Location = new System.Drawing.Point(6, 33);
             this.StudentSubject_txtKeywordFilter.Name = "StudentSubject_txtKeywordFilter";
             this.StudentSubject_txtKeywordFilter.Size = new System.Drawing.Size(174, 20);
-            this.StudentSubject_txtKeywordFilter.TabIndex = 9;
+            this.StudentSubject_txtKeywordFilter.TabIndex = 3;
             // 
             // StudentSubject_cmbClassesFilter
             // 
@@ -134,7 +134,7 @@
             this.StudentSubject_cmbClassesFilter.Location = new System.Drawing.Point(6, 113);
             this.StudentSubject_cmbClassesFilter.Name = "StudentSubject_cmbClassesFilter";
             this.StudentSubject_cmbClassesFilter.Size = new System.Drawing.Size(174, 21);
-            this.StudentSubject_cmbClassesFilter.TabIndex = 8;
+            this.StudentSubject_cmbClassesFilter.TabIndex = 5;
             this.StudentSubject_cmbClassesFilter.SelectedIndexChanged += new System.EventHandler(this.StudentSubject_cmbClassesFilter_SelectedIndexChanged);
             // 
             // groupBox1
@@ -158,7 +158,7 @@
             this.Subject_txtSpecialization.Name = "Subject_txtSpecialization";
             this.Subject_txtSpecialization.ReadOnly = true;
             this.Subject_txtSpecialization.Size = new System.Drawing.Size(156, 20);
-            this.Subject_txtSpecialization.TabIndex = 8;
+            this.Subject_txtSpecialization.TabIndex = 2;
             // 
             // Subject_txtSubjectCode
             // 
@@ -166,7 +166,7 @@
             this.Subject_txtSubjectCode.Name = "Subject_txtSubjectCode";
             this.Subject_txtSubjectCode.ReadOnly = true;
             this.Subject_txtSubjectCode.Size = new System.Drawing.Size(156, 20);
-            this.Subject_txtSubjectCode.TabIndex = 2;
+            this.Subject_txtSubjectCode.TabIndex = 1;
             // 
             // Subject_txtSubjectName
             // 
@@ -174,7 +174,7 @@
             this.Subject_txtSubjectName.Name = "Subject_txtSubjectName";
             this.Subject_txtSubjectName.ReadOnly = true;
             this.Subject_txtSubjectName.Size = new System.Drawing.Size(156, 20);
-            this.Subject_txtSubjectName.TabIndex = 3;
+            this.Subject_txtSubjectName.TabIndex = 0;
             // 
             // label1
             // 
@@ -252,7 +252,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
             this.Name = "SubjectStudent";
-            this.Text = "SubjectStudent";
+            this.Text = "Sinh viên chưa qua môn";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);

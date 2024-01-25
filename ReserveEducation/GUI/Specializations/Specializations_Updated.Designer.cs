@@ -47,8 +47,10 @@
             // 
             // cmb_Faculty
             // 
+            this.cmb_Faculty.DropDownHeight = 80;
             this.cmb_Faculty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_Faculty.FormattingEnabled = true;
+            this.cmb_Faculty.IntegralHeight = false;
             this.cmb_Faculty.Location = new System.Drawing.Point(15, 64);
             this.cmb_Faculty.Name = "cmb_Faculty";
             this.cmb_Faculty.Size = new System.Drawing.Size(357, 21);

@@ -70,26 +70,23 @@ namespace ReserveEducation
             switch (selectedIndex)
             {
                 case 0:
-                    loadDataFaculty();
-                    loadDataSpecialization();
-                    break;
-                case 1:
                     loadDataStudentClass();
                     loadDataStudent();
                     break;
-                case 2:
+                case 1:
                     loadDataSpecialization();
                     loadDataSubject();
                     break;
-                case 3:
+                case 2:
                     loadDataSpecialization();
                     loadDataStudentClass();
                     break;
-                case 4:
+                case 3:
                     loadDataFaculty();
                     loadDataSpecialization();
                     break;
                 default:
+                    loadData();
                     break;
             }
         }
@@ -162,7 +159,7 @@ namespace ReserveEducation
             }
             else if (e.ColumnIndex == senderGrid.Columns["Faculty_btnDelete"].Index && e.RowIndex >= 0)
             {
-                var result = MessageBox.Show("Bạn có chắc muốn xóa khoa này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("Bạn có chắc muốn xóa khoa này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
@@ -171,13 +168,13 @@ namespace ReserveEducation
                     bool deleteResult = FacultyService.Delete(facultyID);
                     if (deleteResult == true)
                     {
-                        MessageBox.Show("Xóa khoa thành công", "Thông báo");
+                        MessageBox.Show("Xóa khoa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadDataFaculty();
                         loadDataSpecialization();
                     }
                     else
                     {
-                        MessageBox.Show("Xóa khoa thất bại", "Thông báo");
+                        MessageBox.Show("Xóa khoa thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -298,7 +295,7 @@ namespace ReserveEducation
             }
             else if (e.ColumnIndex == senderGrid.Columns["Specialization_btnDelete"].Index && e.RowIndex >= 0)
             {
-                var result = MessageBox.Show("Bạn có chắc muốn xóa chuyên ngành này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("Bạn có chắc muốn xóa chuyên ngành này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
@@ -307,14 +304,14 @@ namespace ReserveEducation
                     bool deleteResult = SpecializationService.Delete(specializationID);
                     if (deleteResult == true)
                     {
-                        MessageBox.Show("Xóa chuyên ngành thành công", "Thông báo");
+                        MessageBox.Show("Xóa chuyên ngành thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadDataSpecialization();
                         loadDataStudentClass();
                         loadDataSubject();
                     }
                     else
                     {
-                        MessageBox.Show("Xóa chuyên ngành thất bại", "Thông báo");
+                        MessageBox.Show("Xóa chuyên ngành thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -451,7 +448,7 @@ namespace ReserveEducation
             }
             else if (e.ColumnIndex == senderGrid.Columns["Class_btnDelete"].Index)
             {
-                var result = MessageBox.Show("Bạn có chắc muốn xóa lớp không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("Bạn có chắc muốn xóa lớp không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
                     var selectedRow = dgvClasses.Rows[e.RowIndex];
@@ -459,13 +456,13 @@ namespace ReserveEducation
                     bool deleteResult = ClassService.Delete(classID);
                     if (deleteResult == true)
                     {
-                        MessageBox.Show("Xóa lớp thành công", "Thông báo");
+                        MessageBox.Show("Xóa lớp thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadDataStudentClass();
                         loadDataStudent();
                     }
                     else
                     {
-                        MessageBox.Show("Xóa lớp thất bại", "Thông báo");
+                        MessageBox.Show("Xóa lớp thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -600,7 +597,7 @@ namespace ReserveEducation
             }
             else if (e.ColumnIndex == senderGrid.Columns["Subject_btnDelete"].Index && e.RowIndex >= 0)
             {
-                var result = MessageBox.Show("Bạn có chắc muốn xóa môn học này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("Bạn có chắc muốn xóa môn học này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
@@ -609,15 +606,25 @@ namespace ReserveEducation
                     bool deleteResult = SubjectService.Delete(subjectID);
                     if (deleteResult == true)
                     {
-                        MessageBox.Show("Xóa môn học thành công", "Thông báo");
+                        MessageBox.Show("Xóa môn học thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadDataSubject();
                     }
                     else
                     {
-                        MessageBox.Show("Xóa môn học thất bại", "Thông báo");
+                        MessageBox.Show("Xóa môn học thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
+        }
+        private void dgvSubjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                Subject selectedSubject = subjects[e.RowIndex];
+                SubjectStudent f = new SubjectStudent(selectedSubject);
+                f.ShowDialog();
+            }
+
         }
         private void Subjects_btnFilter_Click(object sender, EventArgs e)
         {
@@ -754,7 +761,7 @@ namespace ReserveEducation
             }
             else if (e.ColumnIndex == senderGrid.Columns["Student_btnDelete"].Index && e.RowIndex >= 0)
             {
-                var result = MessageBox.Show("Bạn có chắc muốn xóa sinh viên này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("Bạn có chắc muốn xóa sinh viên này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
@@ -763,13 +770,13 @@ namespace ReserveEducation
                     bool deleteResult = StudentService.Delete(studentID);
                     if (deleteResult == true)
                     {
-                        MessageBox.Show("Xóa sinh viên thành công", "Thông báo");
+                        MessageBox.Show("Xóa sinh viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         loadDataStudent();
                         loadDataStudentClass();
                     }
                     else
                     {
-                        MessageBox.Show("Xóa sinh viên thất bại", "Thông báo");
+                        MessageBox.Show("Xóa sinh viên thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -848,15 +855,6 @@ namespace ReserveEducation
 
         #endregion
 
-        private void dgvSubjects_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                Subject selectedSubject = subjects[e.RowIndex];
-                SubjectStudent f = new SubjectStudent(selectedSubject);
-                f.ShowDialog();
-            }
-
-        }
+        
     }
 }
