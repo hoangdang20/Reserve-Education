@@ -16,7 +16,7 @@ namespace ReserveEducation.Services
         public static PagedList<Subject> Query(SearchSubjectDto request)
         {
             request.Keyword = request.Keyword == null ? null : request.Keyword.ToLower();
-            var data = db.Subjects.Where(x => (request.Keyword == null || x.Name.ToLower().Contains(request.Keyword) || x.Code.ToLower().Contains(request.Keyword) || x.ID.ToString().ToLower().Contains(request.Keyword)) && (request.SpecializationID == null || x.SpecializationID == request.SpecializationID)).ToList();
+            var data = db.Subjects.Where(x => (request.Keyword == null || x.Name.ToLower().Contains(request.Keyword) || x.Code.ToLower().Contains(request.Keyword)) && (request.SpecializationID == null || x.SpecializationID == request.SpecializationID)).ToList();
             return new PagedList<Subject>(data, request.NumberPage, request.PageSize, data.Count());
         }
         public static bool Create(Subject data)

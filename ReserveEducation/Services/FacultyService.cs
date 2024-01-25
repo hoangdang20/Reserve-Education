@@ -18,7 +18,7 @@ namespace ReserveEducation.Services
         {
             request.Keyword = request.Keyword == null ? null : request.Keyword.ToLower();
             var temo = db.Faculties.ToList();
-            var data = db.Faculties.Where(x => request.Keyword == null || x.Name.ToLower().Contains(request.Keyword) || x.ID.ToString().ToLower().Contains(request.Keyword)).ToList();
+            var data = db.Faculties.Where(x => request.Keyword == null || x.Name.ToLower().Contains(request.Keyword)).ToList();
             return new PagedList<Faculty>(data, request.NumberPage, request.PageSize, data.Count());
         }
 
