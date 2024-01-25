@@ -44,12 +44,12 @@ namespace ReserveEducation.GUI.Classes
         {
             if (data.Name == string.Empty)
             {
-                MessageBox.Show("Nhập tên lớp");
+                MessageBox.Show("Nhập tên lớp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
             if (cmbSpecialization.Text == string.Empty)
             {
-                MessageBox.Show("Chọn chuyên ngành");
+                MessageBox.Show("Chọn chuyên ngành", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
             bool result = data.ID > 0 ? ClassService.Update(data) : ClassService.Create(data);
