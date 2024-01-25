@@ -251,7 +251,10 @@
             this.ClientSize = new System.Drawing.Size(714, 428);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SubjectStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Sinh viên chưa qua môn";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

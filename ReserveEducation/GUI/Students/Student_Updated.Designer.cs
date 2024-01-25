@@ -241,6 +241,8 @@
             this.Controls.Add(this.Student_btnUpdate);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Student_Updated";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Thông tin sinh viên";
