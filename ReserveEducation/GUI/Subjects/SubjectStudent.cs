@@ -61,7 +61,7 @@ namespace ReserveEducation.GUI.Subjects
 
             var classes = ClassService.Query(new Dtos.ClassDto.SearchClassDto()
             {
-                SpecializationID = subject.SpecializationID,
+                // SpecializationID = subject.SpecializationID,
                 PageSize = 100000000,
             });
             classesTotal = classes.Data;
